@@ -1,17 +1,15 @@
 package vehicle;
 
 public class Vehicle {
-    protected final static double  DEFAULT_FUEL_CONSUMPTION=1.25;
-    protected double  fuelConsumption;
-    protected double fuel;
-    protected  int horsePower;
-
+    private static final double DEFAULT_FUEL_CONSUMPTION=1.25;
+    private double fuelConsumption;
+    private double fuel;
+    private int horsePower;
     public Vehicle(double fuel,int horsePower){
-        this.fuelConsumption=DEFAULT_FUEL_CONSUMPTION;
-        this.horsePower=horsePower;
         this.fuel=fuel;
+        this.horsePower=horsePower;
+        this.fuelConsumption=DEFAULT_FUEL_CONSUMPTION;
     }
-
 
     public static double getDefaultFuelConsumption() {
         return DEFAULT_FUEL_CONSUMPTION;
@@ -39,5 +37,13 @@ public class Vehicle {
 
     public void setHorsePower(int horsePower) {
         this.horsePower = horsePower;
+    }
+
+    public void drive (double kilometers){
+        double fuelCost=this.fuelConsumption*kilometers;
+        if(fuelCost<=this.fuel){
+            this.fuel-=fuelCost;
+        }
+
     }
 }
