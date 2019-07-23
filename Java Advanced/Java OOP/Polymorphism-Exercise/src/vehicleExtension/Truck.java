@@ -1,30 +1,16 @@
 package vehicleExtension;
 
-public class Truck extends Vehicle {
+public class Truck extends Vehicles implements Drivable {
 
-
-    public Truck(double fuel, double fuelConsumption, double tankCapacity) {
-        super(fuel, fuelConsumption, tankCapacity);
+    public Truck(double fuelQuantity, double fuelConsumption, double tankCapacity) {
+        super(fuelQuantity, fuelConsumption, tankCapacity, 1.6);
     }
 
     @Override
-    protected void setFuelConsumption(double fuelConsumption) {
-        this.fuelConsumption = fuelConsumption + 1.6;
-    }
-
-
-    @Override
-    public void refuel(Double liters) {
-        double newValue = liters*0.95;
-        if(liters<=0){
-            System.out.println("Fuel must be a positive number");
-        }else  if(newValue+this.getFuel()>this.tankCapacity){
-            System.out.println("Cannot fit fuel in tank");
-        }else{
-            setFuel(newValue + this.getFuel());
+    public void refuel(double liters) {
+        if(liters <= 0){
+            throw new IllegalArgumentException("Fuel must be a positive number");
         }
-
-
-
+        this.setFuelQuantity(super.getFuelQuantity() + liters * 0.95);
     }
 }

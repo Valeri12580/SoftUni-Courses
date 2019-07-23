@@ -7,101 +7,70 @@ import java.text.DecimalFormat;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
-        String[] carInformation=reader.readLine().split(" ");
-        Vehicle car=new Car(Double.parseDouble(carInformation[1]),Double.parseDouble(carInformation[2]),Double.parseDouble(carInformation[3]));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-        String[]truckInformation=reader.readLine().split(" ");
+        Vehicles car = createVehicle(bufferedReader);
+        Vehicles truck = createVehicle(bufferedReader);
+        Bus bus = (Bus) createVehicle(bufferedReader);
 
-        Vehicle truck=new Truck(Double.parseDouble(truckInformation[1]),Double.parseDouble(truckInformation[2]),Double.parseDouble(truckInformation[3]));
-        String[]busInfo=reader.readLine().split(" ");
-        Vehicle bus=new Bus(Double.parseDouble(busInfo[1]),Double.parseDouble(busInfo[2]),Double.parseDouble(busInfo[3]));
-        DecimalFormat df=new DecimalFormat("#.##");
+        int numberOfCommands = Integer.parseInt(bufferedReader.readLine());
 
-        int n=Integer.parseInt(reader.readLine());
-
-        for (int i = 0; i <n; i++) {
-            String[] input=reader.readLine().split(" ");
-            String command=input[0];
-            String vehicleType=input[1];
-            double value=Double.parseDouble(input[2]);
-
-            switch (command){
-                case "Drive":
-                    if(vehicleType.equals("Car")){
-                        if(value*car.fuelConsumption<=car.fuel){
-                            System.out.printf("Car travelled %s km%n",df.format(value));
-                            car.setFuel(car.getFuel()-(value*car.fuelConsumption));
-                        }else{
-                            System.out.println("Car needs refueling");
-                        }
-                    }else if (vehicleType.equals("Truck")){
-                        if(value*truck.fuelConsumption<=truck.getFuel()){
-                            System.out.printf("Truck travelled %s km%n",df.format(value));
-                            truck.setFuel(truck.getFuel()-value*truck.fuelConsumption);
-                        }else{
-                            System.out.println("Truck needs refueling");
-
-                        }
-
-
-                    }else{
-                        if(value*bus.fuelConsumption<=bus.getFuel()){
-                            System.out.printf("Bus travelled %s km%n",df.format(value));
-                            bus.setFuel(bus.getFuel()-value*bus.fuelConsumption);
-                        }else{
-                            System.out.println("Bus needs refueling");
-
-                        }
+        for (int i = 0; i < numberOfCommands; i++) {
+            String[] lines = bufferedReader.readLine().split("\\s+");
+            String command = lines[0];
+            String vehicleType = lines[1];
+            double value = Double.parseDouble(lines[2]);
+            try {
+                if (command.equals("Drive")) {
+                    if (vehicleType.equals("Car")) {
+                        System.out.println(car.drive(value));
+                    } else if (vehicleType.equals("Truck")) {
+                        System.out.println(truck.drive(value));
+                    } else if (vehicleType.equals("Bus")) {
+                        System.out.println(bus.drive(value));
                     }
-                    break;
-
-
-
-                case "Refuel":
-                    if(vehicleType.equals("Car")){
+                } else if (command.equals("Refuel")) {
+                    if (vehicleType.equals("Car")) {
                         car.refuel(value);
-
-                    }else if (vehicleType.equals("Truck")){
+                    } else if (vehicleType.equals("Truck")) {
                         truck.refuel(value);
-
-                    }else{
+                    } else if (vehicleType.equals("Bus")) {
                         bus.refuel(value);
                     }
-
+                } else if (command.equals("DriveEmpty")) {
+                    bus.setEmpty(true);
+                    System.out.println(bus.drive(value));
+                } else {
                     break;
-                case "DriveEmpty":
-
-                     bus.fuelConsumption-=1.4;
-                    if(value*bus.fuelConsumption<=bus.getFuel()){
-                        System.out.printf("Bus travelled %s km%n",df.format(value));
-                        bus.setFuel(bus.getFuel()-value*bus.fuelConsumption);
-                    }else{
-                        System.out.println("Bus needs refueling");
-
-                    }
-                    break;
-                    default:
-                        bus.fuelConsumption+=1.4;
-                        if(value*bus.fuelConsumption<=bus.getFuel()){
-                            System.out.printf("Bus travelled %s km%n",df.format(value));
-                            bus.setFuel(bus.getFuel()-value*bus.fuelConsumption);
-                        }else{
-                            System.out.println("Bus needs refueling");
-
-                        }
-
-
-
+                }
+            } catch (IllegalArgumentException ex) {
+                System.out.println(ex.getMessage());
             }
-
 
         }
 
+        System.out.println(car);
+        System.out.println(truck);
+        System.out.println(bus);
+    }
 
+    private static Vehicles createVehicle(BufferedReader bufferedReader) throws IOException {
+        String[] lines = bufferedReader.readLine().split("\\s+");
 
-        System.out.printf("Car: %.2f%n",car.getFuel());
-        System.out.printf("Truck: %.2f%n",truck.getFuel());
-        System.out.printf("Bus: %.2f",bus.getFuel());
+        String vehicleType = lines[0];
+        double fuelQuantity = Double.parseDouble(lines[1]);
+        double fuelConsumption = Double.parseDouble(lines[2]);
+        double tankCapacity = Double.parseDouble(lines[3]);
+
+        switch (vehicleType) {
+            case "Car":
+                return new Car(fuelQuantity, fuelConsumption, tankCapacity);
+            case "Truck":
+                return new Truck(fuelQuantity, fuelConsumption, tankCapacity);
+            case "Bus":
+                return new Bus(fuelQuantity, fuelConsumption, tankCapacity);
+            default:
+                return null;
+        }
     }
 }

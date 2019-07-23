@@ -1,28 +1,29 @@
 package vehicleExtension;
 
-public class Bus extends Vehicle {
-    protected Bus(double fuel, double fuelConsumption, double tankCapacity) {
-        super(fuel, fuelConsumption, tankCapacity);
+public class Bus extends Vehicles implements Drivable {
+
+    private boolean isEmpty = false;
+
+    public Bus(double fuelQuantity, double fuelConsumption, double tankCapacity) {
+        super(fuelQuantity, fuelConsumption, tankCapacity, 1.4);
     }
 
     @Override
-    protected void setFuelConsumption(double fuelConsumption) {
-        this.fuelConsumption=fuelConsumption;
-
-    }
-
-
-
-
-    @Override
-    public void refuel(Double liters) {
-        if(liters<=0){
-            System.out.println("Fuel must be a positive number");
-        }else if(getFuel()+liters>this.tankCapacity){
-            System.out.println("Cannot fit fuel in tank");
-        }else{
-            this.setFuel(getFuel()+liters);
+    public String drive(double distance) {
+        if(this.isEmpty){
+            super.setCONSUMPTION_INCREASE_VALUE(0);
+            this.isEmpty = false;
         }
 
+        String result = super.drive(distance);
+
+        super.setCONSUMPTION_INCREASE_VALUE(1.4);
+
+        return result;
+    }
+
+
+    public void setEmpty(boolean empty) {
+        this.isEmpty = empty;
     }
 }
