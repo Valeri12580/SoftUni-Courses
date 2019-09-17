@@ -70,6 +70,11 @@
       <workItem from="1567501398520" duration="150000" />
       <workItem from="1567501716696" duration="2000" />
       <workItem from="1567504002521" duration="1000" />
+      <workItem from="1568196997943" duration="406000" />
+      <workItem from="1568285742259" duration="78000" />
+      <workItem from="1568550440005" duration="148000" />
+      <workItem from="1568550850178" duration="6000" />
+      <workItem from="1568702120938" duration="1315000" />
     </task>
     <servers />
   </component>
@@ -86,6 +91,11 @@
             <option name="lambda-ordinal" value="-1" />
           </properties>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/spaceStation/Main.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
