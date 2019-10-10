@@ -7,6 +7,7 @@ import org.junit.Test;
 public class HeroRepositoryTests {
     HeroRepository repository;
 
+
     @Before
     public void createRepository() {
         repository = new HeroRepository();
