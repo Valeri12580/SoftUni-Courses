@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="@localhost" uuid="e115622c-1a2d-41b7-a792-6259f1846ea6">
+      <database-info product="MySQL" version="8.0.17" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.15 (Revision: 79a4336f140499bd22dd07f02b708e163844e3d5)" dbms="MYSQL" exact-version="8.0.17" exact-driver-version="8.0">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema" negative="1" />
+          <node kind="schema" qname="@" />
+          <node kind="schema" qname="book_library" />
+          <node kind="schema" qname="camp" />
+          <node kind="schema" qname="colonial_journey_management_system_db" />
+          <node kind="schema" qname="diablo" />
+          <node kind="schema" qname="geography" />
+          <node kind="schema" qname="gringotts" />
+          <node kind="schema" qname="information_schema" />
+          <node kind="schema" qname="mysql" />
+          <node kind="schema" qname="online_store" />
+          <node kind="schema" qname="orders" />
+          <node kind="schema" qname="performance_schema" />
+          <node kind="schema" qname="relation_exercise" />
+          <node kind="schema" qname="restaurant" />
+          <node kind="schema" qname="soft_uni" />
+          <node kind="schema" qname="sys" />
+          <node kind="schema" qname="test" />
+          <node kind="schema" qname="university_database" />
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
+  </component>
+</project>
