@@ -1,10 +1,33 @@
 import {get,post,put,del} from "./requester.js";
 
 
+
+
 (()=>{
+
+
+    function displaySuccess(message){
+        let div=document.querySelector("#successBox");
+        div.style.display="block";
+        div.textContent=message;
+        setTimeout(()=>{
+            div.style.display="none"
+        },5000)
+    }
+    function displayError(message){
+        let div=document.querySelector("#errorBox");
+        div.style.display="block";
+        div.textContent=message;
+        setTimeout(()=>{
+            div.style.display="none"
+        },5000)
+    }
+
+
     let commonPartials={
         header:"../templates/common/header.hbs",
-        footer:"../templates/common/header.hbs"
+        footer:"../templates/common/header.hbs",
+        notifications:"../templates/notifications.hbs"
     }
 
     function setHeaderInfo(ctx){
@@ -18,6 +41,7 @@ import {get,post,put,del} from "./requester.js";
         this.use("Handlebars","hbs")
 
         this.get("/",function(ctx){
+           
             setHeaderInfo(ctx)
 
             get("appdata","events","Kinvey").catch(console.error).then(e=>{
@@ -44,8 +68,14 @@ import {get,post,put,del} from "./requester.js";
                     sessionStorage.setItem("password",e.password)
                     sessionStorage.setItem("authtoken",e._kmd.authtoken)
                     sessionStorage.setItem("_id",e._id)
+                    displaySuccess("Login is successful!Redirecting after 5 seconds...")
+                   setTimeout(()=>{
                     ctx.redirect("/")
-            })
+                   },5000) 
+
+                    
+                   
+            }).catch(displayError("Error!")) //tuk displayvame errorite sled validaciite
         })
 
 
@@ -55,21 +85,33 @@ import {get,post,put,del} from "./requester.js";
             this.loadPartials(commonPartials).partial("../templates/register.hbs")
         })
 
+
+        //tuk cathvame error 
         this.post("/register",function(ctx){
             let {username,password,rePassword}=this.params;
-            if(password!==rePassword){
-                alert("Passwords are not the same!")
-            }else{
-                post("user","",{username,password},"Basic").then(e=>{
-                    
-                    
-                    sessionStorage.setItem("username",e.username);
-                    sessionStorage.setItem("password",e.password)
-                    sessionStorage.setItem("authtoken",e._kmd.authtoken)
-                    sessionStorage.setItem("_id",e._id)
-                        ctx.redirect("/")
-                    })
+            try{
+                if(password!==rePassword){
+                    throw new Error("Passwords are not the same")
+                 }else{
+                     post("user","",{username,password},"Basic").then(e=>{
+                         
+                         
+                         sessionStorage.setItem("username",e.username);
+                         sessionStorage.setItem("password",e.password)
+                         sessionStorage.setItem("authtoken",e._kmd.authtoken)
+                         sessionStorage.setItem("_id",e._id)
+                         displaySuccess("Register is successful!Redirecting after 5 seconds...")
+                        setTimeout(()=>{
+                         ctx.redirect("/")
+                        },5000) 
+                             
+                         })
+                 }
+            }catch(e){
+                displayError(e.message)
             }
+
+            
             
         })
         this.get("/logout",function(ctx){
@@ -99,7 +141,10 @@ import {get,post,put,del} from "./requester.js";
             }
             post("appdata","events",event,"Kinvey").then(e=>{
                 
-                ctx.redirect("/")
+                displaySuccess("The event is created successful!Redirecting after 5 seconds...")
+                setTimeout(()=>{
+                 ctx.redirect("/")
+                },5000) 
                 
             })
         })
@@ -159,15 +204,21 @@ import {get,post,put,del} from "./requester.js";
             
             put("appdata",`events/${_id}`,editedEvent,"Kinvey").then(e=>{
                 
+                displaySuccess("Edited!Redirecting after 5 seconds...")
+                   setTimeout(()=>{
+                    ctx.redirect("/")
+                   },5000) 
                 
-                ctx.redirect("/")
             })
         })
         
         this.get("/close/:id",function(ctx){
             del("appdata",`events/${this.params.id}`,"Kinvey").then(e=>{
-                console.log(e);
-                ctx.redirect("/")
+                
+                displaySuccess("Deleted!!Redirecting after 5 seconds...")
+                   setTimeout(()=>{
+                    ctx.redirect("/")
+                   },5000) 
                 
             })
         })
@@ -179,8 +230,11 @@ import {get,post,put,del} from "./requester.js";
                     
                     
                     put("appdata",`events/${id}`,e,"Kinvey").then(data=>{
-                        console.log(data);
-                        ctx.redirect(`/details/${id}`)
+                        displaySuccess("You are joined !Redirecting after 5 seconds...")
+                   setTimeout(()=>{
+                    ctx.redirect(`/details/${id}`)
+                   },5000) 
+                       
                         
                     })
                     
