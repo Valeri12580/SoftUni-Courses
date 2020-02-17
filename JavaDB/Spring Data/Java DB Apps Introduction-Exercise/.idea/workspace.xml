@@ -42,6 +42,20 @@
         <item name="minions_db: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="minions: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="minions_db: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="minions_villains: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="minions_db: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="villains: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -127,6 +141,8 @@
       <option name="presentableId" value="Default" />
       <updated>1581873165314</updated>
       <workItem from="1581873166897" duration="12397000" />
+      <workItem from="1581955256094" duration="7002000" />
+      <workItem from="1581975651876" duration="51000" />
     </task>
     <servers />
   </component>

@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -23,6 +24,8 @@ public class Main {
         props.setProperty("password", "1234");
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/minions_db", props);
 
+        //премахни един по един закоментираното извикване на методите,за да работи
+
         //2.	Get Villains’ Names
 //        secondExercise();
 
@@ -37,14 +40,22 @@ public class Main {
 //            fifthExercise();
 
 
+        //6-та задача не е задължителна!
+
 
         //7.	Print All Minion Names
-        seventhExercise();
+//        seventhExercise();
+
+//        8.	Increase Minions Age
+//        eightExercise();
 
 
-
+//        9.	Increase Age Stored Procedure
+//        ninthExercise();
 
     }
+
+
 
 
     public  static void secondExercise() throws SQLException {
@@ -72,10 +83,9 @@ public class Main {
            villainStatement.setInt(1,villainId);
 
            PreparedStatement minionsStatement=connection.prepareStatement("SELECT m.name,m.age\n" +
-                   "FROM villains as v\n" +
-                   "JOIN minions_villains mv on v.id = mv.villain_id\n" +
-                   "JOIN minions m on mv.minion_id = m.id\n" +
-                   "WHERE v.id=?");
+                   "FROM minions as m\n" +
+                   "JOIN minions_villains mv on m.id = mv.minion_id\n" +
+                   "WHERE mv.villain_id=?");
            minionsStatement.setInt(1,villainId);
 
             result=villainStatement.executeQuery();
@@ -102,20 +112,71 @@ public class Main {
         String[] villainInfo=reader.readLine().split(" ");
         String villainName=villainInfo[0];
 
+
+        long townId=0;
+        long villainId=0;
+        long minionId=0;
+
         //check the town
-        query="SELECT * FROM towns WHERE name=?";
+        query="SELECT id FROM towns WHERE name=?";
         preparedStatement=connection.prepareStatement(query);
         preparedStatement.setString(1,town);
         result=preparedStatement.executeQuery();
+
+
         if(!result.next()){
             statement=connection.createStatement();
-            int affectedRows=statement.executeUpdate(String.format("Insert into towns(name) VALUES (\"%s\")",town));
+            int affectedRows=statement.executeUpdate(String.format("Insert into towns(name) VALUES (\"%s\")",town),Statement.RETURN_GENERATED_KEYS);
             if(affectedRows!=0){
                 System.out.println(String.format("Town %s was added to the database.",town));
+                result=statement.getGeneratedKeys();
+                if(result.next()){
+                    townId=result.getLong(1);
+                }
+
             }
 
+        }else{
+            townId=result.getInt(1);
         }
 
+        //check the villain
+
+        query="SELECT id FROM villains WHERE name=?";
+        preparedStatement=connection.prepareStatement(query);
+        preparedStatement.setString(1,villainName);
+        result=preparedStatement.executeQuery();
+
+
+        if(!result.next()){
+            statement=connection.createStatement();
+            int affectedRows=statement.executeUpdate(String.format("Insert into villains(name,evilness_factor) VALUES (\"%s\",\"evil\")",villainName),Statement.RETURN_GENERATED_KEYS);
+            if(affectedRows!=0){
+                System.out.println(String.format("Villain %s was added to the database.",villainName));
+                result=statement.getGeneratedKeys();
+                if(result.next()){
+                    villainId=result.getLong(1);
+                }
+
+            }
+
+        }else{
+            villainId=result.getInt(1);
+        }
+
+        //add the minion
+        statement=connection.createStatement();
+        int insertMinion=statement.executeUpdate(String.format("Insert into minions(name,age,town_id) VALUES (\"%s\",%d,%d)",minionName,age,townId),Statement.RETURN_GENERATED_KEYS);
+        if(insertMinion!=0){
+            result=statement.getGeneratedKeys();
+            if(result.next()){
+                minionId=result.getLong(1);
+            }
+        }
+        int insertMap =statement.executeUpdate(String.format("Insert into minions_villains(minion_id,villain_id) VALUES (%d,%d)",minionId,villainId));
+        if(insertMap!=0 && insertMinion!=0){
+            System.out.println(String.format("Successfully added %s to be minion of %s",minionName,villainName));
+        }
 
     }
     public  static void fifthExercise() throws IOException, SQLException {
@@ -163,12 +224,44 @@ public class Main {
             System.out.println(result.getString("name"));
         }
 
+    }
 
+    public static void eightExercise() throws IOException, SQLException {
+        int[] ids= Arrays.stream(reader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 
+        for (int id : ids) {
+            statement=connection.createStatement();
+            statement.executeUpdate(String.format("Update minions SET age=age+1,name=Lower(name) WHERE id=%d",id));
+        }
 
-
+        query="SELECT name,age FROM minions";
+        preparedStatement=connection.prepareStatement(query);
+        result=preparedStatement.executeQuery();
+        while (result.next()){
+            System.out.println(String.format("%s %d",result.getString("name"),result.getInt("age")));
+        }
 
 
     }
+
+    public static void ninthExercise() throws IOException, SQLException {
+
+        int id=Integer.parseInt(reader.readLine());
+
+        CallableStatement callableStatement=connection.prepareCall("{CALL usp_get_older (?)}");
+        callableStatement.setInt(1,id);
+
+        callableStatement.executeQuery();
+
+        preparedStatement=connection.prepareStatement("Select name,age FROm minions WHERE id=?");
+        preparedStatement.setInt(1,id);
+        result=preparedStatement.executeQuery();
+        while (result.next()){
+            System.out.println(String.format("%s %s",result.getString("name"),result.getInt("age")));
+        }
+
+
+    }
+
 
 }
