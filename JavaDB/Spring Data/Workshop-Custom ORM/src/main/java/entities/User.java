@@ -31,6 +31,9 @@ public class User {
         this.registrationDate = registrationDate;
     }
 
+    public User() {
+    }
+
     public int getId() {
         return id;
     }
