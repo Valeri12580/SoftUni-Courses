@@ -28,14 +28,15 @@ public class EntityManager<E> implements DbContext<E> {
         Field id = this.getId(entity.getClass());
         id.setAccessible(true);
         Object value = id.get(entity);
-        String tableName=this.getTableName(entity.getClass());
+        String tableName = this.getTableName(entity.getClass());
 
-        try{
-            connection.prepareStatement("SELECT * FROM " +tableName).execute();
-        }catch(SQLException e){
+        try {
+            connection.prepareStatement("SELECT * FROM " + tableName).execute();
+        } catch (SQLException e) {
             this.doCreate(entity.getClass());
-        };
-            this.doAlter(entity.getClass());
+        }
+        ;
+        this.doAlter(entity.getClass());
         if (value == null || (int) value <= 0) {
             return this.doInsert(entity, id);
         }
@@ -176,11 +177,11 @@ public class EntityManager<E> implements DbContext<E> {
 
     @Override
     public boolean deleteUser(E entity) throws SQLException, NoSuchFieldException, IllegalAccessException {
-        Field fieldByCriteria=entity.getClass().getDeclaredField("id");
-        Field fieldId=this.getId(entity.getClass());
+        Field fieldByCriteria = entity.getClass().getDeclaredField("id");
+        Field fieldId = this.getId(entity.getClass());
         fieldId.setAccessible(true);
         Object value = fieldId.get(entity);
-        String query="DELETE FROM "+this.getTableName(entity.getClass())+" WHERE "+this.getColumnName(fieldByCriteria)+"="+value;
+        String query = "DELETE FROM " + this.getTableName(entity.getClass()) + " WHERE " + this.getColumnName(fieldByCriteria) + "=" + value;
         return connection.prepareStatement(query).execute();
     }
 
@@ -270,45 +271,43 @@ public class EntityManager<E> implements DbContext<E> {
 
 
     private void doAlter(Class entity) throws SQLException {
-        String query= String.format("ALTER TABLE %s  ",this.getTableName(entity));
-        Field[] fields=entity.getDeclaredFields();
-        List<String>itemsToBeAdded = new ArrayList<>();
+        String query = String.format("ALTER TABLE %s  ", this.getTableName(entity));
+        Field[] fields = entity.getDeclaredFields();
+        List<String> itemsToBeAdded = new ArrayList<>();
 
         for (int i = 0; i < fields.length; i++) {
             Field field = fields[i];
             field.setAccessible(true);
-            String fieldName=this.getColumnName(field);
+            String fieldName = this.getColumnName(field);
 
 
-            if(!checkIfColumnExistsInDatabase(entity,fieldName)){
+            if (!checkIfColumnExistsInDatabase(entity, fieldName)) {
 
-                itemsToBeAdded.add("ADD COLUMN "+fieldName+" "+this.getDbType(field));
+                itemsToBeAdded.add("ADD COLUMN " + fieldName + " " + this.getDbType(field));
 
 
-            }else{
+            } else {
                 continue;
             }
 
         }
-        query+=itemsToBeAdded.stream().collect(Collectors.joining(","));
-        query+=";";
+        query += itemsToBeAdded.stream().collect(Collectors.joining(","));
+        query += ";";
         connection.prepareStatement(query).execute();
 
     }
 
 
+    private boolean checkIfColumnExistsInDatabase(Class entity, String fieldName) throws SQLException {
 
-    private  boolean checkIfColumnExistsInDatabase(Class entity, String fieldName) throws SQLException {
-
-        String query=String.format("SELECT COLUMN_NAME FROM information_schema.COLUMNS\n" +
-                "WHERE table_name=\"%s\" AND COLUMN_NAME NOT IN (\"TOTAL_CONNECTIONS\",\"CURRENT_CONNECTIONS\",\"USER\") AND column_name=\"%s\"",this.getTableName(entity),fieldName);
-                ResultSet rs=connection.prepareStatement(query).executeQuery();
-            if(rs.next()){
-                return true;
-            }else{
-                return false;
-            }
-
+        String query = String.format("SELECT COLUMN_NAME FROM information_schema.COLUMNS\n" +
+                "WHERE table_name=\"%s\" AND COLUMN_NAME NOT IN (\"TOTAL_CONNECTIONS\",\"CURRENT_CONNECTIONS\",\"USER\") AND column_name=\"%s\"", this.getTableName(entity), fieldName);
+        ResultSet rs = connection.prepareStatement(query).executeQuery();
+        if (rs.next()) {
+            return true;
+        } else {
+            return false;
+        }
 
 
     }

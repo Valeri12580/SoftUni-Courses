@@ -6,25 +6,25 @@ import annotations.Id;
 
 import java.util.Date;
 
-@Entity(name="users")
+@Entity(name = "users")
 public class User {
     @Id
-    @Column(name="id")
+    @Column(name = "id")
     private int id;
 
-    @Column(name="username")
+    @Column(name = "username")
     private String username;
 
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
 
-    @Column(name="age")
+    @Column(name = "age")
     private int age;
 
-    @Column(name="registration_date")
+    @Column(name = "registration_date")
     private Date registrationDate;
 
-    @Column(name="test")
+    @Column(name = "test")
     private String test;
 
 
@@ -33,7 +33,7 @@ public class User {
         this.password = password;
         this.age = age;
         this.registrationDate = registrationDate;
-        this.test="test";
+        this.test = "test";
     }
 
     public User() {
