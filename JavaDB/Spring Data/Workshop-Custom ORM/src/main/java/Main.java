@@ -16,10 +16,12 @@ public class Main {
         Connector.createConnection("root","1234","orm_db");
 
         EntityManager<User> entityManager=new EntityManager<>(Connector.getConnection());
+//        User addUser=new User("Valeri","1234",15,new Date());
+//        entityManager.persist(addUser);
+       User user=entityManager.findFirst(User.class,"id =7");
 
-       User user=new User("Ivan","1234",19,new Date());
+        entityManager.deleteUser(user);
 
-       entityManager.persist(user);
 
 
 

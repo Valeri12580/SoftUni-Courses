@@ -3,9 +3,7 @@ package orm;
 import annotations.Column;
 import annotations.Entity;
 import annotations.Id;
-import com.mysql.cj.x.protobuf.MysqlxCrud;
 
-import javax.xml.crypto.Data;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
@@ -33,11 +31,11 @@ public class EntityManager<E> implements DbContext<E> {
         String tableName=this.getTableName(entity.getClass());
 
         try{
-            connection.prepareStatement(String.format("\"SELECT * FROM %s\"",tableName)).execute();
+            connection.prepareStatement("SELECT * FROM " +tableName).execute();
         }catch(SQLException e){
             this.doCreate(entity.getClass());
         };
-
+            this.doAlter(entity.getClass());
         if (value == null || (int) value <= 0) {
             return this.doInsert(entity, id);
         }
@@ -176,6 +174,16 @@ public class EntityManager<E> implements DbContext<E> {
 
     }
 
+    @Override
+    public boolean deleteUser(E entity) throws SQLException, NoSuchFieldException, IllegalAccessException {
+        Field fieldByCriteria=entity.getClass().getDeclaredField("id");
+        Field fieldId=this.getId(entity.getClass());
+        fieldId.setAccessible(true);
+        Object value = fieldId.get(entity);
+        String query="DELETE FROM "+this.getTableName(entity.getClass())+" WHERE "+this.getColumnName(fieldByCriteria)+"="+value;
+        return connection.prepareStatement(query).execute();
+    }
+
 
     private Field getId(Class entity) {
 
@@ -260,8 +268,8 @@ public class EntityManager<E> implements DbContext<E> {
 
     }
 
-    @Override
-    public void doAlter(Class<E> entity) throws SQLException {
+
+    private void doAlter(Class entity) throws SQLException {
         String query= String.format("ALTER TABLE %s  ",this.getTableName(entity));
         Field[] fields=entity.getDeclaredFields();
         List<String>itemsToBeAdded = new ArrayList<>();
@@ -269,10 +277,10 @@ public class EntityManager<E> implements DbContext<E> {
         for (int i = 0; i < fields.length; i++) {
             Field field = fields[i];
             field.setAccessible(true);
-            String fieldName=field.getAnnotation(Column.class).name();
+            String fieldName=this.getColumnName(field);
 
 
-            if(!checkIfFieldExistsInDatabase(entity,fieldName)){
+            if(!checkIfColumnExistsInDatabase(entity,fieldName)){
 
                 itemsToBeAdded.add("ADD COLUMN "+fieldName+" "+this.getDbType(field));
 
@@ -288,7 +296,9 @@ public class EntityManager<E> implements DbContext<E> {
 
     }
 
-    private  boolean checkIfFieldExistsInDatabase(Class entity,String fieldName) throws SQLException {
+
+
+    private  boolean checkIfColumnExistsInDatabase(Class entity, String fieldName) throws SQLException {
 
         String query=String.format("SELECT COLUMN_NAME FROM information_schema.COLUMNS\n" +
                 "WHERE table_name=\"%s\" AND COLUMN_NAME NOT IN (\"TOTAL_CONNECTIONS\",\"CURRENT_CONNECTIONS\",\"USER\") AND column_name=\"%s\"",this.getTableName(entity),fieldName);
