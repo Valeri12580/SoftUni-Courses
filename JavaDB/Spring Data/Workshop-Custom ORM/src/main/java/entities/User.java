@@ -24,11 +24,16 @@ public class User {
     @Column(name="registration_date")
     private Date registrationDate;
 
+    @Column(name="test")
+    private String test;
+
+
     public User(String username, String password, int age, Date registrationDate) {
         this.username = username;
         this.password = password;
         this.age = age;
         this.registrationDate = registrationDate;
+        this.test="test";
     }
 
     public User() {

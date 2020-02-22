@@ -1,3 +1,4 @@
+import annotations.Entity;
 import entities.User;
 import orm.Connector;
 import orm.EntityManager;
@@ -16,11 +17,13 @@ public class Main {
 
         EntityManager<User> entityManager=new EntityManager<>(Connector.getConnection());
 
+       User user=new User("Ivan","1234",19,new Date());
 
-        List<User> users = (List<User>) entityManager.find(User.class);
-        for (User user : users) {
-            System.out.println(user.getId()+" "+user.getUsername()+" "+user.getPassword()+" "+user.getAge()+" "+user.getRegistrationDate());
-        }
+       entityManager.persist(user);
+
+
+
+
 
 
     }
