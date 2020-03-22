@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Users>
+    <user>
+        <name>Valeri</name>
+        <age>18</age>
+        <address>
+            <city>Klisura</city>
+        </address>
+        <address>
+            <city>Plovdiv</city>
+        </address>
+    </user>
+    <user>
+        <name>Valeri</name>
+        <age>18</age>
+        <address>
+            <city>Klisura</city>
+        </address>
+        <address>
+            <city>Plovdiv</city>
+        </address>
+    </user>
+    <user>
+        <name>Valeri</name>
+        <age>18</age>
+        <address>
+            <city>Klisura</city>
+        </address>
+        <address>
+            <city>Plovdiv</city>
+        </address>
+    </user>
+</Users>
