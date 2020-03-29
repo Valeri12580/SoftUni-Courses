@@ -48,7 +48,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public String importCars() throws IOException {
         StringBuilder sb=new StringBuilder();
-       DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d/MM/yyyy");
+       DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         ImportCarDto[] importCarDtos=this.gson.fromJson(new FileReader("src/main/resources/files/json/cars.json"),ImportCarDto[].class);
 
         for (ImportCarDto importCarDto : importCarDtos) {
