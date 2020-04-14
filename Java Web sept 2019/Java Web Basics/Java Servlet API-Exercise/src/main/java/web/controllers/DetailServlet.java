@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/details/Cigari")
+@WebServlet("/details/*")
 public class DetailServlet extends HttpServlet {
 
     private ProductService productService;
@@ -27,13 +27,14 @@ public class DetailServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name=req.getPathInfo().split("/")[1];
+
+        String name=req.getPathInfo().replace("/","");
         ProductServiceModel result=this.productService.getProductByName(name);
 
         resp.getWriter().println(this.fileUtil.readContent("D:\\Programming\\MyCode\\SoftUni courses\\Java Web sept 2019\\Java Web Basics\\Java Servlet API-Exercise\\src\\main\\webapp\\view\\detail.html")
                 .replace("{{replace}}",
-                        String.format("<h1>%s</h1>" +
-                                "<p>%s</p>" +
-                                "<p>%s</p>",result.getName(),result.getDescription(),result.getType().toString())));
+                        String.format("<h2 class=\"text-center mb-2\">Name: %s</h2>" +
+                                "<p class=\"text-center\"><strong>Description:</strong> %s</p>" +
+                                "<p class=\"text-center\" ><strong>Type:</strong> %s</p>",result.getName(),result.getDescription(),result.getType().toString())));
     }
 }

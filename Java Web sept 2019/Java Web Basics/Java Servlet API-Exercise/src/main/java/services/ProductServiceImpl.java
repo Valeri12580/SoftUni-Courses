@@ -36,7 +36,7 @@ public class ProductServiceImpl implements ProductService {
                 .map(e -> this.modelMapper.map(e, ProductServiceModel.class)).collect(Collectors.toList());
         StringBuilder sb=new StringBuilder();
         result.forEach(e->{
-            sb.append(String.format("<li><a href=/details/%s>%s</a></li>\n",e.getName(),e.getName()));
+            sb.append(String.format("<a class=\"d-flex justify-content-center mb-2\" href=/details/%s >%s</a>\n",e.getName(),e.getName()));
         });
 
         return sb.toString();
