@@ -13,10 +13,14 @@
 </head>
 <body>
 <form method="post">
-
+    <p>Number</p>
     <input type="text" name="number"/>
+    <p>Info</p>
+    <input type="text" name="info"/>
     <button>Submit</button>
 </form>
+
+
 
 
 <%if(request.getAttribute("number")!=(null)){%>
@@ -31,7 +35,7 @@
     <%}%>
 
 
-
+<p><%=request.getSession().getAttribute("info")%></p>
 
 </body>
 </html>

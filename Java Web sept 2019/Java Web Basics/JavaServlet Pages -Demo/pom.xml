@@ -7,6 +7,7 @@
     <groupId>org.example</groupId>
     <artifactId>JavaServlet Pages -Demo</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <build>
         <plugins>

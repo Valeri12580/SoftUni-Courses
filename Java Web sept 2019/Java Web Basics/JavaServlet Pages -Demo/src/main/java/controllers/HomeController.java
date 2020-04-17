@@ -26,6 +26,7 @@ public class HomeController extends HttpServlet {
             number=null;
         }
         req.setAttribute("number",number);
+
         req.getRequestDispatcher("/views/index.jsp").forward(req, resp);
     }
 
@@ -34,6 +35,7 @@ public class HomeController extends HttpServlet {
         System.out.println();
         integers.add(0,Integer.valueOf(req.getParameter("number")));
 
+        req.getSession().setAttribute("info",req.getParameter("info"));
         resp.sendRedirect("/");
     }
 }
