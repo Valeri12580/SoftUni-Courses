@@ -30,6 +30,8 @@ public class CarServiceImpl implements CarService {
         this.entityManager.persist(this.modelMapper.map(carServiceModel, Car.class));
 
         this.entityManager.getTransaction().commit();
+
+
     }
 
     @Override
