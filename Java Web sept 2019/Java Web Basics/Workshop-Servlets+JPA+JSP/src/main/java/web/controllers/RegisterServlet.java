@@ -29,9 +29,15 @@ public class RegisterServlet  extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserRegisterBindingModel model=new UserRegisterBindingModel(req.getParameter("username"),req.getParameter("password"),req.getParameter("email"));
-        this.userService.registerUser(model);
-        resp.sendRedirect("/users/login");
+        if(!req.getParameter("confirmPassword").equals(req.getParameter("password"))){
+            req.setAttribute("exception","The passwords are not the same!");
+            req.getRequestDispatcher("/register.jsp").forward(req, resp);
+        }else{
+            UserRegisterBindingModel model=new UserRegisterBindingModel(req.getParameter("username"),req.getParameter("password"),req.getParameter("email"));
+            this.userService.registerUser(model);
+            resp.sendRedirect("/users/login");
+        }
+
     }
 
 }

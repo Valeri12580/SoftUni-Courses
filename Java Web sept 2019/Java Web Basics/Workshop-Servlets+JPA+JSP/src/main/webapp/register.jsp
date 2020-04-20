@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Valer
@@ -93,6 +94,11 @@
             </div>
         </div>
     </form>
+    <c:if test="${exception!=null}">
+        <div class="alert alert-danger text-center" role="alert">
+                ${exception}
+        </div>
+    </c:if>
 </div>
 </body>
 </html>

@@ -2,10 +2,8 @@ package web.controllers;
 
 import models.binding.CarCreateBindingModel;
 import models.view.UserViewModel;
-import org.modelmapper.ModelMapper;
-import repositories.interfaces.UserRepository;
+
 import services.interfaces.CarService;
-import services.interfaces.UserService;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
