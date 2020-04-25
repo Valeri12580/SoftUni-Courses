@@ -4,10 +4,13 @@ import models.binding.EmployeeBindingModel;
 import models.view.EmployeeViewModel;
 import services.interfaces.EmployeeService;
 
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -27,21 +30,13 @@ public class UserBean {
         this.employeeBindingModel = employeeBindingModel;
 
 
-    }
 
+    }
     @PostConstruct
     public void init(){
         this.employeeViewModel=this.employeeService.getAllEmployees();
     }
 
-
-    public EmployeeService getEmployeeService() {
-        return employeeService;
-    }
-
-    public void setEmployeeService(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
 
     public EmployeeBindingModel getEmployeeBindingModel() {
         return employeeBindingModel;
@@ -52,7 +47,6 @@ public class UserBean {
     }
 
 
-
     public List<EmployeeViewModel> getEmployeeViewModel() {
         return this.employeeViewModel;
     }
@@ -61,9 +55,18 @@ public class UserBean {
         this.employeeViewModel = employeeViewModel;
     }
 
-    public void saveEmp(){
+    public void saveEmp() throws IOException {
         this.employeeService.save(employeeBindingModel);
+
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/views/index.xhtml");
     }
+
+    public  String removeEmployeeById(String idString ){ int id =Integer.parseInt(idString);
+      this.employeeService.removeEmployeeById(id);
+        return "/faces/views/index.xhtml";
+    }
+
+
 
 
 }

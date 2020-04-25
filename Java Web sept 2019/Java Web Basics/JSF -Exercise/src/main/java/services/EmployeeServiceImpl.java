@@ -8,6 +8,7 @@ import repositories.EmployeeRepository;
 import services.interfaces.EmployeeService;
 
 import javax.inject.Inject;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,5 +33,20 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<EmployeeViewModel> getAllEmployees() {
         List<EmployeeViewModel>result=this.employeeRepository.getAllEmployees().stream().map(e-> this.modelMapper.map(e,EmployeeViewModel.class)).collect(Collectors.toList());
         return result;
+    }
+
+    @Override
+    public void removeEmployeeById(int id) {
+        this.employeeRepository.removeEmployeeById(id);
+    }
+
+    @Override
+    public BigDecimal getAverageSalary() {
+        return this.employeeRepository.getAverageSalary();
+    }
+
+    @Override
+    public BigDecimal getSalarySum() {
+        return this.employeeRepository.getSalarySum();
     }
 }

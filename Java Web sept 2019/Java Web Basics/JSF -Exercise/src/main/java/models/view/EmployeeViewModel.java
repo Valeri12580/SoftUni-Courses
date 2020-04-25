@@ -19,6 +19,9 @@ public class EmployeeViewModel {
 
     private int age;
 
+    public EmployeeViewModel() {
+    }
+
     public EmployeeViewModel(String firstName, int id, String lastName, String position, BigDecimal salary, int age) {
         this.firstName = firstName;
         this.id = id;

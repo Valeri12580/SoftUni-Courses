@@ -29,20 +29,24 @@
             </thead>
             <tbody>
 
-            <ui:repeat   value="#{UserBean.employeeViewModel}" var="employee">
-                <tr class="row">
-                    <th scope="row" class="col-md-1">#{employee.id}</th>
-                    <td class="col-md-2">#{employee.firstName}</td>
-                    <td class="col-md-2">#{employee.lastName}</td>
-                    <td class="col-md-3">#{employee.position}</td>
-                    <td class="col-md-1">#{employee.salary}</td>
-                    <td class="col-md-1">#{employee.age}</td>
-                    <td class="col-md-2">
-                        <button class="btn btn-danger">Remove</button>
-                    </td>
-                </tr>
+            <h:form>
+                <ui:repeat   value="#{UserBean.employeeViewModel}" var="employee">
 
-            </ui:repeat>
+                    <tr class="row">
+                        <th scope="row" class="col-md-1">#{employee.id}</th>
+                        <td class="col-md-2">#{employee.firstName}</td>
+                        <td class="col-md-2">#{employee.lastName}</td>
+                        <td class="col-md-3">#{employee.position}</td>
+                        <td class="col-md-1">#{employee.salary}</td>
+                        <td class="col-md-1">#{employee.age}</td>
+                        <td class="col-md-2">
+                            <h:commandButton  value="Remove"  action="#{UserBean.removeEmployeeById(employee.id)}" class="btn btn-danger" />
+                        </td>
+                    </tr>
+
+                </ui:repeat>
+            </h:form>
+
 
             </tbody>
         </table>
@@ -80,8 +84,8 @@
 
         <hr style="height: 2px;" class="bg-dark"/>
         <div class="d-flex justify-content-between">
-            <h5 class="w-50">Total Money Needed: $16900.00</h5>
-            <h5 class="w-50 text-right">Average Salary: $4225.00</h5>
+            <h5 class="w-50">Total Money Needed: 1500</h5>
+            <h5 class="w-50 text-right">Average Salary:3230</h5>
         </div>
         <hr style="height: 2px;" class="bg-dark"/>
     </div>
