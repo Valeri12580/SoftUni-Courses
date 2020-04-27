@@ -5,11 +5,12 @@ import services.interfaces.EmployeeService;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.math.BigDecimal;
 
-@Named("salaryCalculation")
+
+@Named("SalaryCalculationBean")
 @RequestScoped
 public class SalaryCalculatonBean {
+
     private EmployeeService employeeService;
 
     public SalaryCalculatonBean() {
@@ -21,12 +22,12 @@ public class SalaryCalculatonBean {
     }
 
 
-    public BigDecimal getAvgSalary(){
 
-        return this.employeeService.getAverageSalary();
-    }
 
-    public BigDecimal getSumSalaryAllEmployees(){
+    public Double getSumSalaryAllEmployees(){
         return  this.employeeService.getSalarySum();
+    }
+    public Double getAverageSalary(){
+        return this.employeeService.getAverageSalary();
     }
 }

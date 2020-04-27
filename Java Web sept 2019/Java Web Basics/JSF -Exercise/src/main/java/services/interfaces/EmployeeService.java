@@ -3,7 +3,6 @@ package services.interfaces;
 import models.binding.EmployeeBindingModel;
 import models.view.EmployeeViewModel;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public interface EmployeeService {
@@ -14,7 +13,7 @@ public interface EmployeeService {
 
     void removeEmployeeById(int id);
 
-    BigDecimal getAverageSalary();
-    BigDecimal getSalarySum();
+    Double getAverageSalary();
+    Double getSalarySum();
 
 }

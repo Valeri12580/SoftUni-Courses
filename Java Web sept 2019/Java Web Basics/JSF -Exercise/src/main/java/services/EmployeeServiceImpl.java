@@ -8,7 +8,6 @@ import repositories.EmployeeRepository;
 import services.interfaces.EmployeeService;
 
 import javax.inject.Inject;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,12 +40,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public BigDecimal getAverageSalary() {
+    public Double getAverageSalary() {
         return this.employeeRepository.getAverageSalary();
     }
 
     @Override
-    public BigDecimal getSalarySum() {
+    public Double getSalarySum() {
         return this.employeeRepository.getSalarySum();
     }
 }

@@ -15,37 +15,38 @@ public class EmployeeRepository {
         this.entityManager = entityManager;
     }
 
-    public  void save(Employee employee){
+    public void save(Employee employee) {
         this.entityManager.getTransaction().begin();
 
         this.entityManager.persist(employee);
 
-
         this.entityManager.getTransaction().commit();
     }
 
-    public List<Employee>getAllEmployees(){
+    public List<Employee> getAllEmployees() {
 
-        return this.entityManager.createQuery("SELECT e FROM Employee e ",Employee.class).getResultList();
+        return this.entityManager.createQuery("SELECT e FROM Employee e ", Employee.class).getResultList();
     }
 
-    public void removeEmployeeById(int id ){
+    public void removeEmployeeById(int id) {
         this.entityManager.getTransaction().begin();
 
-        this.entityManager.createQuery("DELETE FROM Employee WHERE id=:id").setParameter("id",id).executeUpdate();
+        this.entityManager.createQuery("DELETE FROM Employee WHERE id=:id").setParameter("id", id).executeUpdate();
 
         this.entityManager.getTransaction().commit();
 
     }
 
-    public BigDecimal getSalarySum(){
-       return this.entityManager.createQuery("SELECT sum(e.salary) FROM Employee  e ",BigDecimal.class).getSingleResult();
+    public Double getSalarySum() {
+        Double singleResult = this.entityManager.createQuery("SELECT sum(e.salary) FROM Employee  e ", BigDecimal.class).getSingleResult().doubleValue();
+        return singleResult;
 
 
     }
 
-    public BigDecimal getAverageSalary(){
-        return this.entityManager.createQuery("SELECT avg(e.salary) FROM Employee  e ",BigDecimal.class).getSingleResult();
+    public Double getAverageSalary() {
+        Double singleResult = (Double) this.entityManager.createQuery("SELECT avg(e.salary) FROM Employee  e ").getSingleResult();
+        return singleResult;
     }
 
 }
