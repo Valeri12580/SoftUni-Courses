@@ -1,2 +1,2 @@
-# SoftUni-Courses.Each exam folder combines all the essentials learned in the module
+# SoftUni-Courses.Each exam project in the course folder combines all of the essentials learned in the module
 
