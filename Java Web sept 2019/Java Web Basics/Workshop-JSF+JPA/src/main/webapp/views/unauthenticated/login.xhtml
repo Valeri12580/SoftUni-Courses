@@ -32,7 +32,6 @@
             </div>
             <div class="button-holder d-flex justify-content-center">
                 <h:commandButton id = "login" styleClass="btn btn-info text-white" action="#{loginBean.loginUser}" value="Submit">
-                    <f:ajax execute="login" render="errorMessage"/>
                 </h:commandButton>
             </div>
             <div  class="label-holder d-flex justify-content-center ">
@@ -42,7 +41,7 @@
         </h:form>
         <hr class="my-3"/>
 
-        <ui:include src="../common/parts/unauthenticated/footer.xhtml"/>
+        <ui:include src="../common/parts/footer.xhtml"/>
     </h:body>
 </f:view>
 </html>

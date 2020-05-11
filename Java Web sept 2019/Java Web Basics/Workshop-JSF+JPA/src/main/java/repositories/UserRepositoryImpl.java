@@ -6,6 +6,7 @@ import repositories.interfaces.UserRepository;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import java.util.UUID;
 
 
 public class UserRepositoryImpl implements UserRepository {
@@ -39,5 +40,10 @@ public class UserRepositoryImpl implements UserRepository {
             return null;
         }
         return user;
+    }
+
+    @Override
+    public User getUserById(String id) {
+        return this.entityManager.createQuery("SELECT u FROM User u WHERE u.id=:id",User.class).setParameter("id",id).getSingleResult();
     }
 }

@@ -5,7 +5,34 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputStylesheet library="css" name="style.css"/>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <title>Home</title>
+</h:head>
 <f:view>
-    <h:outputLabel value="Hello, world"/>
+    <ui:include src="../common/parts/authenticated/header.xhtml"/>
+        <hr class="my-3"/>
+        <div class="text-center mb-3">
+            <h4 class="text-info"><h:outputText value="Welcome, ${user.username}"/></h4>
+        </div>
+        <hr class="my-3"/>
+        <div class="container">
+            <div class="row mb-4 d-flex justify-content-around">
+
+<!--                <div class="col-md-3 d-flex flex-column text-center">-->
+<!--                    <h:graphicImage value="link ot db" styleClass="img-thumbnail" width="300" height="300"/>-->
+<!--                    <h5 class="text-center"><h:outputText value="${ime}"/></h5>-->
+<!--                    <h:link styleClass="btn btn-info" outcome="/jobs/details/?id=${id}" value="Details"/>-->
+<!--                    <h:link styleClass="btn btn-info" outcome="/jobs/delete/?id=${id}" value="Delete"/>-->
+<!--                </div>-->
+
+            </div>
+        </div>
+        <hr class="my-3"/>
+
+
+
+    <ui:include src="../common/parts/footer.xhtml"/>
 </f:view>
 </html>

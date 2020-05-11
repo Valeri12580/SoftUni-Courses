@@ -12,6 +12,7 @@ import utils.ValidationUtilImpl;
 import javax.inject.Inject;
 import java.io.InvalidObjectException;
 import java.rmi.NoSuchObjectException;
+import java.util.UUID;
 
 public class UserServiceImpl implements UserService {
     private ModelMapper modelMapper;
@@ -53,20 +54,10 @@ public class UserServiceImpl implements UserService {
 
     }
 
-
-    public ModelMapper getModelMapper() {
-        return modelMapper;
+    @Override
+    public User getUserById(String id) {
+        return this.userRepository.getUserById(id);
     }
 
-    public void setModelMapper(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
 
-    public UserRepository getUserRepository() {
-        return userRepository;
-    }
-
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 }

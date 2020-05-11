@@ -48,7 +48,7 @@ public class LoginBean {
     public String loginUser() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
-            UserViewModel userViewModel = this.userService.login("","");
+            UserViewModel userViewModel = this.userService.login(userLoginBindingModel);
             context.getExternalContext().getSessionMap().put("user", userViewModel);
 
             return "/views/authenticated/home.xhtml?faces-redirect=true";
