@@ -1,4 +1,4 @@
-package web;
+package web.beans;
 
 
 import domain.binding.UserRegisterBindingModel;
@@ -45,14 +45,8 @@ public class RegisterBean {
 
 
    public String register(){
-       try {
            this.userService.register(userRegisterBindingModel);
            return "login.xhtml?faces-redirect=true";
-
-       } catch (InvalidObjectException e) {
-          errors=e.getMessage();
-           return null;
-       }
 
     }
 }

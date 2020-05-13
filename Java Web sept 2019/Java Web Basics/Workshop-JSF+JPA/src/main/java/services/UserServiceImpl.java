@@ -27,36 +27,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserViewModel login(UserLoginBindingModel userLoginBindingModel) throws NoSuchObjectException {
+    public UserViewModel login(UserLoginBindingModel userLoginBindingModel) {
         User user = this.userRepository.getUserByUsernameAndPassword(userLoginBindingModel.getUsername(),
                 userLoginBindingModel.getPassword());
-        if (user == null) {
-            throw new NoSuchObjectException("There is no user with the provided username or password");
-        } else {
-            return this.modelMapper.map(user, UserViewModel.class);
-        }
+
+        return this.modelMapper.map(user, UserViewModel.class);
+
 
     }
 
     @Override
-    public void register(UserRegisterBindingModel userRegisterBindingModel) throws InvalidObjectException {
+    public void register(UserRegisterBindingModel userRegisterBindingModel) {
         User user = this.modelMapper.map(userRegisterBindingModel, User.class);
-        if (this.validationUtil.isValid(user)) {
-            this.userRepository.save(user);
-        } else {
-            StringBuilder sb = new StringBuilder();
-            this.validationUtil.getViolations(user).forEach(e -> {
-                sb.append(e.getMessage()).append(System.lineSeparator());
-            });
-            throw new InvalidObjectException(sb.toString());
-        }
+        this.userRepository.save(user);
 
 
     }
 
     @Override
     public User getUserById(String id) {
-        return this.userRepository.getUserById(id);
+        return this.userRepository.getById(id);
     }
 
 

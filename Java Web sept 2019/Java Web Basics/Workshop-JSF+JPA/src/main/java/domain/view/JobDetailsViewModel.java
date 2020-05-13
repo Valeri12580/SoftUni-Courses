@@ -1,9 +1,9 @@
-package domain.binding;
+package domain.view;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class JobAddBindingModel {
-
+public class JobDetailsViewModel implements Serializable {
     private String sector;
 
     private String profession;
@@ -11,16 +11,6 @@ public class JobAddBindingModel {
     private BigDecimal salary;
 
     private String description;
-
-    private String userIdentity;
-
-    public String getUserIdentity() {
-        return userIdentity;
-    }
-
-    public void setUserIdentity(String userIdentity) {
-        this.userIdentity = userIdentity;
-    }
 
     public String getSector() {
         return sector;

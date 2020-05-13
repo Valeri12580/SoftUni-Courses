@@ -1,4 +1,4 @@
-package web;
+package web.beans;
 
 import domain.binding.JobAddBindingModel;
 import domain.view.UserViewModel;
@@ -8,7 +8,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.UUID;
 
 
 @Named
@@ -18,15 +17,7 @@ public class AddJobBean {
     private JobService jobService;
 
     public AddJobBean() {
-    }
 
-
-    public JobAddBindingModel getJobAddBindingModel() {
-        return jobAddBindingModel;
-    }
-
-    public void setJobService(JobService jobService) {
-        this.jobService = jobService;
     }
 
     @Inject
@@ -35,13 +26,17 @@ public class AddJobBean {
         this.jobService = jobService;
     }
 
-    //change the uuid to int
+    public JobAddBindingModel getJobAddBindingModel() {
+        return jobAddBindingModel;
+    }
+
+
     public String createJobOffer(){
         UserViewModel currentUser=(UserViewModel) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
 
         String id=currentUser.getId();
 
-        jobAddBindingModel.setUserId(id);
+        jobAddBindingModel.setUserIdentity(id);
         jobService.addJob(jobAddBindingModel);
 
         return "home.xhtml?faces-redirect=true";

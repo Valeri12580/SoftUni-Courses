@@ -1,4 +1,4 @@
-package web;
+package web.beans;
 
 import domain.binding.UserLoginBindingModel;
 import domain.view.UserViewModel;
@@ -8,7 +8,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.rmi.NoSuchObjectException;
 
 @Named
 @RequestScoped
@@ -47,16 +46,12 @@ public class LoginBean {
 
     public String loginUser() {
         FacesContext context = FacesContext.getCurrentInstance();
-        try {
-            UserViewModel userViewModel = this.userService.login(userLoginBindingModel);
-            context.getExternalContext().getSessionMap().put("user", userViewModel);
 
-            return "/views/authenticated/home.xhtml?faces-redirect=true";
+        UserViewModel userViewModel = this.userService.login(userLoginBindingModel);
+        context.getExternalContext().getSessionMap().put("user", userViewModel);
 
-        } catch (NoSuchObjectException e) {
-            this.errors = e.getMessage();
-            return null;
-        }
+        return "/views/authenticated/home.xhtml?faces-redirect=true";
+
 
     }
 

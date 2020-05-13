@@ -5,15 +5,11 @@ import domain.binding.UserRegisterBindingModel;
 import domain.entities.User;
 import domain.view.UserViewModel;
 
-import java.io.InvalidObjectException;
-import java.rmi.NoSuchObjectException;
-import java.util.UUID;
-
 public interface UserService {
 
-    UserViewModel login(UserLoginBindingModel userLoginBindingModel) throws NoSuchObjectException;
+    UserViewModel login(UserLoginBindingModel userLoginBindingModel);
 
-    void register(UserRegisterBindingModel userRegisterBindingModel) throws InvalidObjectException;
+    void register(UserRegisterBindingModel userRegisterBindingModel);
 
     User getUserById(String id );
 
