@@ -29,6 +29,12 @@
         </div>
         <div class="form-group">
             <div class="label-holder d-flex justify-content-center">
+                <label for="confirmPassword" class="h3 mb-2">Confirm Password</label>
+            </div>
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" th:field="*{rePassword}">
+        </div>
+        <div class="form-group">
+            <div class="label-holder d-flex justify-content-center">
                 <label for="gender" class="h3 mb-2">Gender</label>
             </div>
             <select type="text" class="form-control" id="gender" name="gender" th:field="*{gender}">

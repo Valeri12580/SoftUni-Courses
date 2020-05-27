@@ -5,13 +5,10 @@ import bg.example.exampreparation.models.entities.Gender;
 public class UserRegisterDto {
     private String username;
     private String password;
+    private String rePassword;
     private Gender gender;
 
-    public UserRegisterDto(String username, String password, Gender gender) {
-        this.username = username;
-        this.password = password;
-        this.gender = gender;
-    }
+
 
     public UserRegisterDto() {
     }
@@ -38,5 +35,13 @@ public class UserRegisterDto {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public String getRePassword() {
+        return rePassword;
+    }
+
+    public void setRePassword(String rePassword) {
+        this.rePassword = rePassword;
     }
 }
