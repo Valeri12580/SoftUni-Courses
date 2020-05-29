@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputStylesheet library="css" name="style.css"/>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <title>Home</title>
+</h:head>
+<f:view>
+    <ui:include src="../common/parts/authenticated/header.xhtml"/>
+    <hr class="my-3"/>
+    <div class="text-center mb-3">
+        <h4 class="text-info"><h:outputText value="Welcome, ${user.username}"/></h4>
+    </div>
+    <hr class="my-3"/>
+    <div class="container">
+        <div class="row mb-4 d-flex justify-content-around">
+            <ui:repeat value="${jobOffersBean.offers}" var="offer">
+                <div class="col-md-3 d-flex flex-column text-center">
+                    <!--                    <h:graphicImage value="link ot db" styleClass="img-thumbnail" width="300" height="300"/>-->
+                    <h5 class="text-center"><h:outputText value="${offer.profession}"/></h5>
+                    <h:link styleClass="btn btn-info" outcome="job-details" value="Details">
+                        <f:param  name = "id" value="${offer.id}"/>
+                    </h:link>
+                    <h:panelGroup layout="block" rendered="${user.id eq offer.userId}">
+                        <h:link styleClass="btn btn-danger" outcome="delete-job" value="Delete">
+                            <f:param  name = "id" value="${offer.id}"/>
+                        </h:link>
+                    </h:panelGroup>
+
+                </div>
+
+            </ui:repeat>
+
+        </div>
+    </div>
+    <hr class="my-3"/>
+
+
+    <ui:include src="../common/parts/footer.xhtml"/>
+</f:view>
+</html>

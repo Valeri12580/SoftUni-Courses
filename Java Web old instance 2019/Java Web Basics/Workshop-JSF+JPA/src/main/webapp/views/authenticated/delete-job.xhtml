@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputStylesheet library="css" name="style.css"/>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <title>Home</title>
+</h:head>
+<f:view>
+    <ui:include src="../common/parts/authenticated/header.xhtml"/>
+
+    <hr class="my-3"/>
+    <h1 class="text-center">Delete Job</h1>
+    <hr class="hr-3"/>
+    <h:form styleClass="mx-auto w-15">
+        <div class="form-group">
+            <div class="label-holder d-flex justify-content-center">
+                <h:outputLabel for="sector" class="h3 mb-2">Sector</h:outputLabel>
+            </div>
+<!--            <input type="text" class="form-control" id="sector" name="sector" value="Medicine" disabled>-->
+            <h:inputText disabled="true" styleClass="form-control" id="sector" value="${deleteJobBean.jobDetailsViewModel.sector}"/>
+        </div>
+        <div class="form-group">
+            <div class="label-holder d-flex justify-content-center">
+                <label for="profession" class="h3 mb-2">Profession</label>
+            </div>
+            <h:inputText disabled="true" styleClass="form-control" id="profession" value="${deleteJobBean.jobDetailsViewModel.profession}"/>
+        </div>
+        <div class="form-group">
+            <div class="label-holder d-flex justify-content-center">
+                <label for="salary" class="h3 mb-2">Salary</label>
+            </div>
+            <h:inputText disabled="true" styleClass="form-control" id="salary" value="${deleteJobBean.jobDetailsViewModel.salary}"/>
+        </div>
+        <div class="form-group">
+            <div class="label-holder d-flex justify-content-center">
+                <label for="description" class="h3 mb-2">Description</label>
+            </div>
+            <h:inputTextarea disabled="true" styleClass="form-control" id="description" value="${deleteJobBean.jobDetailsViewModel.description}"/>
+        </div>
+        <div class="button-holder d-flex justify-content-center">
+            <h:commandButton styleClass="btn btn-danger text-white" value="Delete!" action="${deleteJobBean.delete()}"/>
+        </div>
+    </h:form>
+    <hr class="my-3"/>
+
+    <ui:include src="../common/parts/footer.xhtml"/>
+</f:view>
+</html>

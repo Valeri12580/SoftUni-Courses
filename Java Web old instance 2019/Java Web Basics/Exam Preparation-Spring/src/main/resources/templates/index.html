@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+    <header th:insert="fragments/unauthorized.html :: header"></header>
+    <main>
+        <hr class="my-3"/>
+        <div class="jumbotron">
+            <p class="h1 display-3">Welcome to Casebook</p>
+            <p class="h3">The best Social Media Application.</p>
+            <hr class="my-3">
+            <p><a th:href="@{/login}">Login</a> if you have an account or <a th:href="@{/register}">Register</a> now and connect to
+                your
+                friends.</p>
+        </div>
+        <hr class="my-3"/>
+    </main>
+<footer th:insert="fragments/unauthorized.html::footer"></footer>
+</body>
+</html>

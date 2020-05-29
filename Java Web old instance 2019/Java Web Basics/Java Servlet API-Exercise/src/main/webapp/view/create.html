@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create product</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container-fluid bg-light">
+    <h1 class="d-flex justify-content-center">Create product</h1>
+    <form method="post">
+        <div class=" form-group col-xs-3 ">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter the name of the product">
+        </div>
+        <div class="form-group col-xs-3">
+            <label for="description">Description</label>
+            <textarea type="description" name="description" class="form-control" id="description"
+                      placeholder="Description"></textarea>
+        </div>
+        <div class="form-group col-xs-3">
+            <label for="type">Select type</label>
+            <select class="form-control" name="type" id="type">
+                <option>Food</option>
+                <option>Domestic</option>
+                <option>Health</option>
+                <option>Cosmetic</option>
+                <option>Other</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Create product</button>
+        <a href="/" class="btn mt-15 btn-primary">Back to home page</a>
+    </form>
+</div>
+
+
+</body>
+</html>

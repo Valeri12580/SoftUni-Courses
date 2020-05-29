@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <h:outputStylesheet library="css" name="style.css"/>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <title>Add job</title>
+</h:head>
+
+<f:view>
+    <ui:include src="../common/parts/authenticated/header.xhtml"/>
+
+    <hr class="my-3"/>
+    <h1 class="text-center">Add Job</h1>
+    <hr class="hr-3"/>
+    <h:form styleClass="mx-auto w-15">
+        <div class="form-group">
+            <div class="label-holder d-flex justify-content-center">
+                <label for="sector" class="h3 mb-2">Sector</label>
+            </div>
+            <h:selectOneMenu styleClass="form-control" id="sector" value="${addJobBean.jobAddBindingModel.sector}">
+                <f:selectItem itemValue="MEDICINE" itemLabel="Medicine"/>
+                <f:selectItem itemValue="CAR" itemLabel="Car"/>
+                <f:selectItem itemValue="FOOD" itemLabel="Food"/>
+                <f:selectItem itemValue="DOMESTIC" itemLabel="Domestic"/>
+                <f:selectItem itemValue="SECURITY" itemLabel="Security"/>
+            </h:selectOneMenu>
+        </div>
+
+        <div class="form-group">
+            <div class="label-holder d-flex justify-content-center">
+                <label for="profession" class="h3 mb-2">Profession</label>
+            </div>
+            <h:inputText styleClass="form-control" id="profession" value="${addJobBean.jobAddBindingModel.profession}"/>
+        </div>
+        <div class="form-group">
+            <div class="label-holder d-flex justify-content-center">
+                <label for="salary" class="h3 mb-2">Salary</label>
+            </div>
+            <h:inputText styleClass="form-control" id="salary" value="${addJobBean.jobAddBindingModel.salary}"/>
+        </div>
+        <div class="form-group">
+            <div class="label-holder d-flex justify-content-center">
+                <label for="description" class="h3 mb-2">Description</label>
+            </div>
+            <h:inputTextarea rows="4" styleClass="form-control" id="description" value="${addJobBean.jobAddBindingModel.description}"/>
+        </div>
+        <div class="button-holder d-flex justify-content-center">
+            <h:commandButton styleClass="btn btn-info text-white" action="${addJobBean.createJobOffer()}" value="Submit"/>
+        </div>
+    </h:form>
+    <hr class="my-3"/>
+
+    <ui:include src="../common/parts/footer.xhtml"/>
+</f:view>
+</html>
