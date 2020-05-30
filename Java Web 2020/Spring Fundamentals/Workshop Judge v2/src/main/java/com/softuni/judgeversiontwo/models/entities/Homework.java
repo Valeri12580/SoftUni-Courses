@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
@@ -24,7 +25,7 @@ public class Homework  extends BaseEntity{
     private LocalDateTime addedOn;
 
     @Column(nullable = false,unique = true)
-//    @Pattern()
+//    @Pattern(message = "Invalid github link",regexp = "^https:\\/\\/github\\.com\\/([^\\/]+(\\/{1,1}|[^\\/]+))(?1)*$")
     private String git;
 
 

@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Pattern;
 
 
 @NoArgsConstructor
@@ -12,28 +13,25 @@ import javax.validation.constraints.Email;
 @Getter
 @Setter
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User extends BaseEntity {
 
-    @Column(nullable = false,unique = true)
-    @Length(min = 2,message = "Username length must be minimum two characters!")
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
-    @Length(min = 2,message = "Username length must be minimum two characters!")
     private String password;
 
-    @Email
-    @Column(nullable = false,unique = true)
+
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false,unique = true)
-//    @Pattern()
+    @Column(nullable = false, unique = true)
     private String git;
 
 
     @ManyToOne
-    @JoinColumn(name = "role_id",referencedColumnName = "id")
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
 
 
