@@ -33,7 +33,7 @@ public class UserRegisterBindingModel {
     private String email;
 
 
-//    @Pattern(message = "Invalid github link",regexp = "^https:\\/\\/github\\.com\\/(([A-Za-z0-9-._~:?#\\[\\]@!$&'()*+,;=]+)(\\/|(1?)))(1?)*$")
+//    @Pattern(message = "Invalid github link",regexp = "^https:\/\/github\.com\/(([A-Za-z0-9-._~:?#\[\]@!$&'()*+,;=]+)(\/|(?2)))(?1)*$")
     private String git;
 
 
