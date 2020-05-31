@@ -6,9 +6,12 @@ import com.softuni.judgeversiontwo.repositories.UserRepository;
 import com.softuni.judgeversiontwo.services.interfaces.RoleService;
 import com.softuni.judgeversiontwo.services.interfaces.UserService;
 import com.softuni.judgeversiontwo.utils.interfaces.ValidationUtil;
+import org.hibernate.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.rmi.NoSuchObjectException;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -41,5 +44,15 @@ public class UserServiceImpl implements UserService {
         return userServiceModel;
 
 
+    }
+
+    @Override
+    public UserServiceModel login(UserServiceModel loginUserModel) throws NoSuchObjectException {
+        User user=this.userRepository.findByUsernameAndPassword(loginUserModel.getUsername(),loginUserModel.getPassword());
+
+        if(user==null){
+            throw new NoSuchObjectException("Incorrect username or password");
+        }
+        return this.modelMapper.map(user,UserServiceModel.class);
     }
 }

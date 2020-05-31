@@ -25,7 +25,7 @@ public class Homework  extends BaseEntity{
     private LocalDateTime addedOn;
 
     @Column(nullable = false,unique = true)
-//    @Pattern(message = "Invalid github link",regexp = "^https:\\/\\/github\\.com\\/([^\\/]+(\\/{1,1}|[^\\/]+))(?1)*$")
+//    @Pattern(message = "Invalid github link",regexp = "^https:\\/\\/github\\.com\\/(([A-Za-z0-9-._~:?#\\[\\]@!$&'()*+,;=]+)(\\/{1,1}|(?2)))(?1)*$")
     private String git;
 
 

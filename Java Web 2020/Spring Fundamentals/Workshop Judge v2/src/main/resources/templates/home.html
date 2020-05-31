@@ -39,7 +39,7 @@
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item" >
                     <a class="nav-link" href="#">
-                        <span class="sr-only">Hello {username}</span>
+                        <span class="sr-only" th:text="${session.user.username}"></span>
                     </a>
                 </li>
                 

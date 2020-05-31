@@ -14,26 +14,26 @@ import javax.validation.constraints.Pattern;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserBindingModel {
+public class UserRegisterBindingModel {
 
-    @NotNull
+
     @Length(min = 2,max=10,message = "Username length must be minimum 2 characters and maximum 10 characters!")
     private String username;
 
-    @NotNull
+
     @Length(min = 3,max=10,message = "password length must be between 3 and 10 characters!")
     private String password;
 
-    @NotNull
+
     @Length(min = 3,max=10,message = "confirm password length must be between 3 and 10 characters!")
     private String confirmPassword;
 
-    @NotNull
+
     @Email
     private String email;
 
-    @NotNull
-    @Pattern(message = "Invalid github link",regexp = "^https:\\/\\/github\\.com\\/([^\\/]+(\\/{1,1}|[^\\/]+))(?1)*$")
+
+//    @Pattern(message = "Invalid github link",regexp = "^https:\\/\\/github\\.com\\/(([A-Za-z0-9-._~:?#\\[\\]@!$&'()*+,;=]+)(\\/|(1?)))(1?)*$")
     private String git;
 
 

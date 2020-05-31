@@ -54,16 +54,17 @@
                                 <input name="username" type="text"
                                        class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
                                        id="username" placeholder="Enter username" th:field="*{username}">
-                                <div class="mx-auto">
-                                    <small class="text-danger">Username must be between 2 and 10 characters</small>
+
+                                <div class="mx-auto" th:if="${#fields.hasErrors('username')}" >
+                                    <small class="text-danger" th:errors="*{username}"></small>
                                 </div>
                             </div>
                             <div class="input-group mt-3">
                                 <label for="password" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Password</label>
                                 <input name="password" type="password" class="form-control validate"
                                        id="password" placeholder="Enter password" th:field="*{password}">
-                                <div class="mx-auto">
-                                    <small class="text-danger">Password must be betweeen 3 and 10 characters</small>
+                                <div class="mx-auto" th:if="${#fields.hasErrors('password')}">
+                                    <small class="text-danger" th:errors="*{password}"></small>
                                 </div>
                             </div>
                             <div class="input-group mt-3">
@@ -71,6 +72,9 @@
                                     Password</label>
                                 <input name="confirmPassword" type="password" class="form-control validate"
                                        id="confirmPassword" placeholder="Confirm password" th:field="*{confirmPassword}">
+                                <div class="mx-auto" th:if="${#fields.hasErrors('confirmPassword')}">
+                                    <small class="text-danger" th:errors="*{confirmPassword}"></small>
+                                </div>
                             </div>
                             <div class="input-group mt-3">
                                 <label for="email"
@@ -79,8 +83,8 @@
                                        placeholder="Enter email" th:field="*{email}">
 
                             </div>
-                            <div class="mx-auto text-center">
-                                <small class="text-danger">Enter valid email address</small>
+                            <div class="mx-auto text-center" th:if="${#fields.hasErrors('email')}">
+                                <small class="text-danger" th:errors="*{email}"></small>
                             </div>
                             <div class="input-group mt-3">
                                 <label for="git" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Git</label>
@@ -88,8 +92,8 @@
                                        placeholder="Enter git" th:field="*{git}">
 
                             </div>
-                            <div class="mx-auto text-center align-content-center">
-                                <small class="text-danger">Enter git address following this pattern </small>
+                            <div class="mx-auto text-center align-content-center " th:if="${#fields.hasErrors('git')}">
+                                <small class="text-danger" th:errors="*{git}" ></small>
                             </div>
                             <div class="input-group mt-3">
                                 <button type="submit" class="btn btn-primary d-inline-block mx-auto">Register</button>
