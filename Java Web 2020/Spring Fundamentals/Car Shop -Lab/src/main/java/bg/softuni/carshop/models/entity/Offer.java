@@ -52,7 +52,7 @@ public class Offer extends CreatedModifiedHistoryBaseEntity {
     private Model model;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id",referencedColumnName = "id")
+    @JoinColumn(name = "seler_id",referencedColumnName = "id")
     private User seller;
 
 
