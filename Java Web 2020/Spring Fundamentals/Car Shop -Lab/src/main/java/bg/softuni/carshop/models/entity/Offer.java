@@ -1,9 +1,8 @@
 package bg.softuni.carshop.models.entity;
 
 import bg.softuni.carshop.models.entity.base.CreatedModifiedHistoryBaseEntity;
-import bg.softuni.carshop.models.enums.Categories;
+import bg.softuni.carshop.models.enums.Category;
 import bg.softuni.carshop.models.enums.Engine;
-import bg.softuni.carshop.models.enums.Roles;
 import bg.softuni.carshop.models.enums.Transmission;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
 @Table
@@ -22,7 +20,7 @@ import java.math.BigDecimal;
 public class Offer extends CreatedModifiedHistoryBaseEntity {
     @Column
     @Enumerated(value = EnumType.STRING)
-    private Categories category;
+    private Category category;
 
     @Column(columnDefinition = "TEXT")
     private String description;

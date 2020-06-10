@@ -1,7 +1,6 @@
 package bg.softuni.carshop.models.entity;
 
 import bg.softuni.carshop.models.entity.base.CreatedModifiedHistoryBaseEntity;
-import bg.softuni.carshop.models.enums.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

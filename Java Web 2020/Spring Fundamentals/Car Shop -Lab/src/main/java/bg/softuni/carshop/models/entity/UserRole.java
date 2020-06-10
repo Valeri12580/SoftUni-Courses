@@ -1,7 +1,7 @@
 package bg.softuni.carshop.models.entity;
 
 import bg.softuni.carshop.models.entity.base.BaseEntity;
-import bg.softuni.carshop.models.enums.Roles;
+import bg.softuni.carshop.models.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,5 +19,5 @@ public class UserRole extends BaseEntity {
 
     @Column
     @Enumerated(value = EnumType.STRING)
-    private Roles role;
+    private Role role;
 }

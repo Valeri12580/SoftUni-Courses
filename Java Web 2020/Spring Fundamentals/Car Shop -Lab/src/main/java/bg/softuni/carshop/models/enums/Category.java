@@ -1,5 +1,5 @@
 package bg.softuni.carshop.models.enums;
 
-public enum Categories {
+public enum Category {
     MOTORCYCLE,TRUCK,CAR
 }
