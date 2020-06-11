@@ -13,5 +13,5 @@ public class RegisterModelServiceModel {
     private int startYear;
     private int endYear;
     private String imageUrl;
-    private Brand brand;
+    private String brand;
 }

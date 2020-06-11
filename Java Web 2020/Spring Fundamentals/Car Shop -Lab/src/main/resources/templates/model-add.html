@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>West Compass</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<main class="main">
+    <header th:insert="fragments/header.html::header">
+    </header>
+
+    <div class="container-fluid">
+        <h2 class="text-center text-white">Add Model</h2>
+        <form class="mt-lg-5 w-15 h-50" action="/models/add" method="post" th:object="${model}">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <div class="label-holder d-flex justify-content-center">
+                            <label class="text-center text-white font-weight-bold" for="brand">Select Brand
+                                <select id="brand" name="brand" class="form-control" th:field="*{brand}">
+                                    <option th:each="brand:${brands}" th:text="${brand.name}"
+                                            th:value="${brand.name}"></option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-12">
+                    <div class="form-group">
+                        <div class="label-holder d-flex justify-content-center">
+                            <label class="text-center text-white font-weight-bold" for="name">Enter Model Name
+                                <input type="text" class="form-control" placeholder="Model name" name="name"
+                                       th:field="*{name}"
+                                       id="name">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-12">
+                    <div class="form-group">
+                        <div class="label-holder d-flex justify-content-center">
+                            <label class="text-center text-white font-weight-bold" for="name">Enter Start year
+                                <input type="number" class="form-control" placeholder="Start year" name="startYear"
+                                       id="startYear" th:field="*{startYear}">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-12">
+                    <div class="form-group">
+                        <div class="label-holder d-flex justify-content-center">
+                            <label class="text-center text-white font-weight-bold" for="name">Enter End year
+                                <input type="number" class="form-control" placeholder="End year" name="endYear"
+                                       id="endYear" th:field="*{endYear}">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-12">
+                    <div class="form-group">
+                        <div class="label-holder d-flex justify-content-center">
+                            <label class="text-center text-white font-weight-bold" for="name">Enter image URL
+                                <input type="text" class="form-control" placeholder="Image url" name="imageUrl"
+                                       id="imageUrl" th:field="*{imageUrl}">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-md-4"></div>
+                <div class="col col-md-4">
+                    <div class="button-holder d-flex justify-content-center">
+                        <input type="submit" class="btn btn-secondary" value="Add Model"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+</body>
+</html>

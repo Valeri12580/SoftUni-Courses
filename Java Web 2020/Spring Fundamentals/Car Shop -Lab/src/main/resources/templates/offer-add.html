@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>West Compass</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<main class="main">
+
+    <header th:insert="fragments/header.html::header">
+
+    </header>
+
+    <div class="container-fluid">
+        <h2 class="text-center text-white">Upload Offer</h2>
+        <form class="mx-auto w-15" action="/offers/add" method="post" th:object="${offer}">
+            <div class="col col-md-12">
+                <div class="form-group ">
+                    <div class="label-holder d-flex justify-content-center">
+                        <label class="text-center text-white font-weight-bold" for="model">Select model
+                            <select id="model" name="model" class="form-control" th:field="*{model}">
+                                <option th:each="model:${models}" th:text="${model.name}"
+                                        th:value="${model.name}"></option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-3"></div>
+                <div class="col col-md-3">
+                    <div class="form-group">
+                        <div class="label-holder d-flex justify-content-center">
+                            <label class="text-center text-white font-weight-bold" for="year">Year
+                                <input th:field="*{year}" type="number" class="form-control" placeholder="Year"
+                                       name="year" id="year">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-3">
+                    <div class="form-group ">
+                        <div class="label-holder d-flex justify-content-center">
+                            <label class="text-center text-white font-weight-bold" for="engine">Engine
+                                <select id="engine" name="engine" class="form-control" th:field="*{engine}">
+                                    <option th:each="engine:${engines}" th:text="${engine}"
+                                            th:value="${engine}"></option>
+
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-3"></div>
+                <div class="col col-md-3">
+                    <div class="form-group">
+                        <div class="label-holder d-flex justify-content-center">
+                            <label class="text-center text-white font-weight-bold" for="year">Mileage
+                                <input type="number" class="form-control" placeholder="Mileage" name="mileage"
+                                       id="mileage" th:field="*{mileage}">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-3">
+                    <div class="form-group ">
+                        <div class="label-holder d-flex justify-content-center">
+                            <label class="text-center text-white font-weight-bold" for="engine">Category
+                                <select id="category" name="category" class="form-control" th:field="*{category}">
+                                    <option th:each="category:${categories}" th:text="${category.name()}"
+                                            th:value="${category}"></option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-3"></div>
+                <div class="col col-md-3">
+                    <div class="form-group">
+                        <div class="label-holder d-flex justify-content-center">
+                            <label class="text-center text-white font-weight-bold" for="price">Price
+                                <input type="number" class="form-control" placeholder="Price" name="price" id="price"
+                                       th:field="*{price}">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-3">
+                    <div class="form-group ">
+                        <div class="label-holder d-flex justify-content-center">
+                            <label class="text-center text-white font-weight-bold" for="transmission">Transmission
+                                <select id="transmission" name="transmission" class="form-control"
+                                        th:field="*{transmission}">
+                                    <option th:each="transmission:${transmissions}" th:text="${transmission.name()}"
+                                            th:value="${transmission}"></option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-3"></div>
+                <div class="col col-md-3">
+                    <div class="form-group">
+                        <div class="label-holder d-flex justify-content-center">
+                            <label class="text-center text-white font-weight-bold" for="imageUrl">Picture Url
+                                <input type="text" class="form-control" name="imageUrl" id="imageUrl"
+                                       placeholder="Picture Url" th:field="*{imageUrl}">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-3">
+                    <div class="form-group ">
+                        <div class="label-holder d-flex justify-content-center">
+                            <label class="text-center text-white font-weight-bold" for="username">Seller username
+                                <select id="username" name="username" class="form-control" th:field="*{sellerUsername}">
+                                    <option th:each="user:${users}" th:text="${user.username}"
+                                            th:value="${user.username}"></option>
+
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <div class="label-holder d-flex justify-content-center">
+                            <label class="text-center text-white font-weight-bold" for="description">Description
+                                <textarea type="textarea" class="form-control" name="description"
+                                          id="description" rows="3"
+                                          placeholder="Description" th:field="*{description}"></textarea>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-4"></div>
+                <div class="col col-md-4">
+                    <div class="button-holder d-flex justify-content-center">
+                        <input type="submit" class="btn btn-secondary" value="Upload Car"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+</body>
+</html>

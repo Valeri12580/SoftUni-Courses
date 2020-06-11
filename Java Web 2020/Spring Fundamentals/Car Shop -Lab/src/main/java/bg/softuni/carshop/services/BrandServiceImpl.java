@@ -8,6 +8,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Service
 public class BrandServiceImpl  implements BrandService {
     private BrandRepository brandRepository;
@@ -22,5 +25,16 @@ public class BrandServiceImpl  implements BrandService {
     @Override
     public void registerBrand(RegisterBrandServiceModel registerBrandServiceModel) {
         this.brandRepository.save(this.modelMapper.map(registerBrandServiceModel, Brand.class));
+    }
+
+    @Override
+    public List<RegisterBrandServiceModel> getAllBrands() {
+        return Arrays.asList(this.modelMapper.map(this.brandRepository.findAll(),RegisterBrandServiceModel[].class));
+    }
+
+    @Override
+    public Brand getBrandByName(String name) {
+
+        return this.brandRepository.findByName(name);
     }
 }

@@ -19,16 +19,16 @@
         <div class='row mb-4 d-flex justify-content-around'>
             <th:block th:each="offer:${offers}">
                 <div class="col-md-4 d-flex flex-column bg-text mb-3">
-                    <h2 th:text="|Car brand: ${offer.getModel().getBrand().getName()}|"></h2>
-                    <h4 th:text="|Model: ${offer.getModel().getName()}|"></h4>
+                    <h2 th:text="|Car brand: ${offer.getModelBrandName()}|"></h2>
+                    <h4 th:text="|Model: ${offer.getModelName()}|"></h4>
                     <h4 th:text="|Year: ${offer.getYear()}|"></h4>
-                    <h4 th:text="|Engine: ${offer.getEngine().name()}|"></h4>
-                    <h4><a class="btn-block" th:href="@{/cars/{id}(id=${offer.getId()})}">Details</a></h4>
+                    <h4 th:text="|Engine: ${offer.getEngine()}|"></h4>
+                    <h4><a class="btn-block" th:href="@{/offers/details/{id}(id=${offer.getId()})}">Details</a></h4>
                 </div>
             </th:block>
-
-
         </div>
+
+    </div>
 </main>
 </body>
 </html>

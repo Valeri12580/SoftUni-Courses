@@ -9,8 +9,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class OfferPreviewViewModel {
     private long id;
-    private String brandName;
+    private String modelBrandName;
     private String modelName;
     private String engine;
+    private int year;
 
 }
