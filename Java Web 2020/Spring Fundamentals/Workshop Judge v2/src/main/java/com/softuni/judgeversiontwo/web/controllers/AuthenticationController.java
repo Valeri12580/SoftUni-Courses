@@ -67,11 +67,13 @@ public class AuthenticationController {
     public ModelAndView login(@ModelAttribute("user") @Valid UserLoginBindingModel userLoginBindingModel
             , BindingResult bindingResult, ModelAndView modelAndView, HttpSession httpSession){
         UserHomeViewModel userHomeViewModel=null;
+
+        //todo validation
         try{
             userHomeViewModel=this.modelMapper.map(this.userService.login(this.modelMapper.map(userLoginBindingModel,UserServiceModel.class))
                     ,UserHomeViewModel.class);
         } catch (NoSuchObjectException e) {
-            bindingResult.reject("Incorrect username or password");
+            bindingResult.rejectValue("invalidUser","error.invalidUser","Invalid username or password");
         }
 
         //todo fix

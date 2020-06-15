@@ -1,9 +1,12 @@
 package com.softuni.judgeversiontwo.services.interfaces;
 
-import com.softuni.judgeversiontwo.models.service.RoleServiceModel;
+
+import com.softuni.judgeversiontwo.models.entities.Role;
 
 public interface RoleService {
 
-    RoleServiceModel findByName(String name);
+    Role findByName(String name);
+
+
 
 }

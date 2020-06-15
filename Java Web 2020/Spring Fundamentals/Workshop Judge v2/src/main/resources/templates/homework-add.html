@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Judge v2</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+
+</head>
+
+<body>
+<div class="container">
+    <div class="row rounded" th:insert="/fragments/logged/navigation.html::navigation">
+
+    </div>
+    <!-- row -->
+    <div class="row tm-mt-big justify-content-center">
+        <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12 ">
+            <div class="bg-white tm-block">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="tm-block-title d-inline-block">Add your homework</h2>
+                    </div>
+                </div>
+                <div class="row mt-4 tm-edit-product-row ">
+                    <div class="col-xl-7 col-lg-7 col-md-12">
+                        <form action="/homework/add" method="post"  th:object="${homework}" class="tm-edit-product-form">
+
+                            <div class="input-group mb-3">
+                                <h1>You late</h1>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label for="exercise" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Exercises</label>
+                                <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="exercise" th:field="*{name}"
+                                        name="exercise">
+                                    <option th:each="exercise:${exercises}" th:text="${exercise}" th:value="${exercise}">Select exercise</option>
+                                </select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="gitAddress" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">
+                                    Github address
+                                </label>
+                                <input id="gitAddress" name="gitAddress" type="text"
+                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" th:field="*{git}">
+                            </div>
+
+                            <small class="text-danger">Invalid github address</small>
+
+
+                            <div class="input-group mb-3">
+                                <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
+                                    <button type="submit" class="btn btn-primary">Add
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-12 mx-auto mb-4">
+                        <img src="/img/homework.png" alt="Homework picture" width="100%">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<footer class="row">
+    <div class="col-12 container-fluid text-right font-weight-light">
+        <p class="d-inline-block tm-bg-black text-white py-2 px-4">
+            &copy; Spring Team 2020
+        </p>
+    </div>
+</footer>
+</div>
+
+
+</body>
+
+</html>

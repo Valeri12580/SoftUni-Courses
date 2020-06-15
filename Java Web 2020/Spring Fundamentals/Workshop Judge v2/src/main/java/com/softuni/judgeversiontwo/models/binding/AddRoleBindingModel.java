@@ -1,4 +1,4 @@
-package com.softuni.judgeversiontwo.models.view;
+package com.softuni.judgeversiontwo.models.binding;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,8 +9,7 @@ import javax.management.relation.Role;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserHomeViewModel {
-    private long id;
+public class AddRoleBindingModel {
     private String username;
-    private String roleName;
+    private String role;
 }
