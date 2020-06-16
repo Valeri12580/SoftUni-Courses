@@ -10,4 +10,6 @@ public interface ExerciseService {
 
     List<String> getAllExerciseNames();
     Exercise getExerciseByName(String name);
+
+    List<String>getAllActiveExercises();
 }

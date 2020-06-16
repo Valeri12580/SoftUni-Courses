@@ -1,11 +1,9 @@
 package com.softuni.judgeversiontwo.models.entities;
 
 import lombok.*;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Pattern;
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -33,6 +31,9 @@ public class User extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
+
+    @OneToMany(mappedBy = "author")
+    private List<Homework> homeworks;
 
 
 }

@@ -29,4 +29,5 @@ public class Comment extends BaseEntity {
     @JoinColumn(name = "homework_id",referencedColumnName = "id")
     private Homework homework;
 
+
 }

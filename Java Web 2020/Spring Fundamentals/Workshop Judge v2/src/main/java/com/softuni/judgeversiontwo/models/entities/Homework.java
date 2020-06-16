@@ -10,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,5 +37,8 @@ public class Homework  extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "exercise_id",referencedColumnName = "id")
     private  Exercise exercise;
+
+    @OneToMany(mappedBy = "homework")
+    private List<Comment> commentList;
 
 }

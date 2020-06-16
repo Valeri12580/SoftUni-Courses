@@ -4,6 +4,7 @@ import com.softuni.judgeversiontwo.models.binding.UserLoginBindingModel;
 import com.softuni.judgeversiontwo.models.binding.UserRegisterBindingModel;
 import com.softuni.judgeversiontwo.models.service.UserServiceModel;
 import com.softuni.judgeversiontwo.models.view.UserHomeViewModel;
+import com.softuni.judgeversiontwo.models.view.UserInfoViewModel;
 import com.softuni.judgeversiontwo.services.interfaces.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -24,13 +22,13 @@ import java.rmi.NoSuchObjectException;
 
 @Controller
 @RequestMapping("/users")
-public class AuthenticationController {
+public class UserController {
 
     private UserService userService;
     private ModelMapper modelMapper;
 
     @Autowired
-    public AuthenticationController(UserService userService, ModelMapper modelMapper) {
+    public UserController(UserService userService, ModelMapper modelMapper) {
         this.userService = userService;
         this.modelMapper = modelMapper;
     }
@@ -88,4 +86,13 @@ public class AuthenticationController {
         return modelAndView;
 
     }
+
+    @GetMapping("/profile/{id}")
+    public String getProfileInfo(@PathVariable("id")long id, Model model){
+        UserInfoViewModel data = this.userService.getUserInfoById(id);
+        model.addAttribute("user",data);
+        return "profile";
+    }
+
+
 }

@@ -3,6 +3,7 @@ package com.softuni.judgeversiontwo.services;
 import com.softuni.judgeversiontwo.models.entities.Role;
 import com.softuni.judgeversiontwo.models.entities.User;
 import com.softuni.judgeversiontwo.models.service.UserServiceModel;
+import com.softuni.judgeversiontwo.models.view.UserInfoViewModel;
 import com.softuni.judgeversiontwo.repositories.UserRepository;
 import com.softuni.judgeversiontwo.services.interfaces.RoleService;
 import com.softuni.judgeversiontwo.services.interfaces.UserService;
@@ -71,11 +72,33 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserById(long id) {
+        return this.userRepository.getOne(id);
+    }
+
+    @Override
+    public UserInfoViewModel getUserInfoById(long id) {
+        User user=this.userRepository.getOne(id);
+        List<String>homeworks=user.getHomeworks().stream().map(e->e.getExercise().getName()).collect(Collectors.toList());
+
+        UserInfoViewModel usf=this.modelMapper.map(user,UserInfoViewModel.class);
+        usf.setHomeworksName(homeworks);
+        return usf;
+    }
+
+    @Override
     public void changeRoles(String username, String role) {
         User user = this.userRepository.findByUsername(username);
         Role fetchedRole = this.roleService.findByName(role);
         user.setRole(fetchedRole);
         this.userRepository.save(user);
 
+    }
+
+    @Override
+    public List<String> getTopStudents() {
+
+        return this.userRepository.getTopUsers().
+                stream().map(e->String.valueOf(e[0])).collect(Collectors.toList());
     }
 }

@@ -7,6 +7,7 @@ import com.softuni.judgeversiontwo.services.interfaces.ExerciseService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,5 +36,12 @@ public class ExerciseServiceImpl  implements ExerciseService {
     @Override
     public Exercise getExerciseByName(String name) {
         return this.exerciseRepository.findByName(name);
+    }
+
+    @Override
+    public List<String> getAllActiveExercises() {
+
+        return this.exerciseRepository.findByDueTimeIsBefore(LocalDateTime.now()).stream()
+                .map(e->e.getName()).collect(Collectors.toList());
     }
 }

@@ -1,11 +1,9 @@
 package com.softuni.judgeversiontwo.repositories;
 
-import com.softuni.judgeversiontwo.models.entities.Homework;
+import com.softuni.judgeversiontwo.models.entities.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface HomeworkRepository extends JpaRepository<Homework,Long> {
-
-    Homework findById(long id);
+public interface CommentRepository extends JpaRepository<Comment,Long> {
 }
