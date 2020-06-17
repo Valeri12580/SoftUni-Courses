@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -24,8 +24,8 @@ import java.rmi.NoSuchObjectException;
 @RequestMapping("/users")
 public class UserController {
 
-    private UserService userService;
-    private ModelMapper modelMapper;
+    private final UserService userService;
+    private final ModelMapper modelMapper;
 
     @Autowired
     public UserController(UserService userService, ModelMapper modelMapper) {
@@ -34,53 +34,56 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String register(Model model){
-        model.addAttribute("user",new UserRegisterBindingModel());
+    public String register(Model model) {
+        model.addAttribute("user", new UserRegisterBindingModel());
         return "register";
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute("user") @Valid UserRegisterBindingModel userRegisterBindingModel , BindingResult bindingResult){
+    public String register(@ModelAttribute("user") @Valid UserRegisterBindingModel userRegisterBindingModel, BindingResult bindingResult) {
 
-        if(!userRegisterBindingModel.getConfirmPassword().equals(userRegisterBindingModel.getPassword())){
-            bindingResult.rejectValue("confirmPassword","error.confirmPassword","Passwords are not equal!");
+        if (!userRegisterBindingModel.getConfirmPassword().equals(userRegisterBindingModel.getPassword())) {
+            bindingResult.rejectValue("confirmPassword", "confirmPassword", "Passwords are not equal!");
         }
 
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "register";
         }
-        System.out.println();
+
         this.userService.register(this.modelMapper.map(userRegisterBindingModel, UserServiceModel.class));
         return "redirect:/users/login";
     }
 
 
     @GetMapping("/login")
-    public String login(Model model){
+    public String login(Model model) {
+
         model.addAttribute("user", new UserLoginBindingModel());
+
         return "login";
     }
 
     @PostMapping("/login")
     public ModelAndView login(@ModelAttribute("user") @Valid UserLoginBindingModel userLoginBindingModel
-            , BindingResult bindingResult, ModelAndView modelAndView, HttpSession httpSession){
-        UserHomeViewModel userHomeViewModel=null;
+            , BindingResult bindingResult, ModelAndView modelAndView, HttpSession httpSession, RedirectAttributes redirectAttributes) {
+        UserHomeViewModel userHomeViewModel = null;
 
         //todo validation
-        try{
-            userHomeViewModel=this.modelMapper.map(this.userService.login(this.modelMapper.map(userLoginBindingModel,UserServiceModel.class))
-                    ,UserHomeViewModel.class);
+        try {
+            userHomeViewModel = this.modelMapper.map(this.userService.login(this.modelMapper.map(userLoginBindingModel, UserServiceModel.class))
+                    , UserHomeViewModel.class);
         } catch (NoSuchObjectException e) {
-            bindingResult.rejectValue("invalidUser","error.invalidUser","Invalid username or password");
+
+            bindingResult.rejectValue("password","password","Invalid username or password");
         }
 
         //todo fix
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             modelAndView.setViewName("login");
 
-        }else{
+        } else {
             modelAndView.setViewName("redirect:/home");
-            httpSession.setAttribute("user",userHomeViewModel);
+            httpSession.setAttribute("user", userHomeViewModel);
         }
 
         return modelAndView;
@@ -88,9 +91,9 @@ public class UserController {
     }
 
     @GetMapping("/profile/{id}")
-    public String getProfileInfo(@PathVariable("id")long id, Model model){
+    public String getProfileInfo(@PathVariable("id") long id, Model model) {
         UserInfoViewModel data = this.userService.getUserInfoById(id);
-        model.addAttribute("user",data);
+        model.addAttribute("user", data);
         return "profile";
     }
 

@@ -32,21 +32,21 @@
                         Admin
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" th:href="@{exercises/add}">Add Exercise</a>
-                        <a class="dropdown-item" th:href="@{roles/add}">Add Role</a>
+                        <a class="dropdown-item" th:href="@{/exercises/add}">Add Exercise</a>
+                        <a class="dropdown-item" th:href="@{/roles/add}">Add Role</a>
 
                     </div>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{homework/check}">Check Homework</a>
+                    <a class="nav-link" th:href="@{/homework/check}">Check Homework</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{homework/add}">Add Homework</a>
+                    <a class="nav-link" th:href="@{/homework/add}">Add Homework</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{users/profile/{id}(id=${session.user.getId()})}">Profile</a>
+                    <a class="nav-link" th:href="@{/users/profile/{id}(id=${session.user.getId()})}">Profile</a>
                 </li>
 
             </ul>

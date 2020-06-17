@@ -3,14 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login Page</title>
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <th:block th:include="~{fragments/headfooter/head}"></th:block>
 
 </head>
 
@@ -50,9 +43,9 @@
                     <div class="col-12">
                         <form  method="post" th:object="${user}"
                               class="tm-login-form">
-<!--                            <div class="mx-auto" th:if="${#fields.hasErrors('invalidUser')}">-->
-<!--                                <small class="text-danger" th:errors="*{'invalidUser'}"></small>-->
-<!--                            </div>-->
+                            <div class="mx-auto" th:if="${#fields.hasErrors()}">
+                                <small th:each="e :${#fields.errors()}"  th:text="${e}" class="text-danger" ></small>
+                            </div>
                              <hr/>
                             <div class="input-group">
                                 <label for="username" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Username</label>

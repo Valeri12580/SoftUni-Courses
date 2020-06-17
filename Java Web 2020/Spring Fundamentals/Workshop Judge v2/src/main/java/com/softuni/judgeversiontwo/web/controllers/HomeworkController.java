@@ -21,9 +21,9 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/homework")
 public class HomeworkController {
-    private ExerciseService exerciseService;
-    private HomeworkService homeworkService;
-    private CommentService commentService;
+    private final ExerciseService exerciseService;
+    private final HomeworkService homeworkService;
+    private final CommentService commentService;
 
     @Autowired
     public HomeworkController(ExerciseService exerciseService, HomeworkService homeworkService, CommentService commentService) {
@@ -34,31 +34,31 @@ public class HomeworkController {
 
 
     @GetMapping("/add")
-    public String registerHomework(Model model){
-        model.addAttribute("homework",new HomeworkBindingModel());
-        model.addAttribute("exercises",this.exerciseService.getAllExerciseNames());
+    public String registerHomework(Model model) {
+        model.addAttribute("homework", new HomeworkBindingModel());
+        model.addAttribute("exercises", this.exerciseService.getAllExerciseNames());
         return "homework-add";
     }
 
     @PostMapping("/add")
-    public String homeworkSubmit(@ModelAttribute @Valid HomeworkBindingModel homeworkBindingModel, BindingResult bindingResult, HttpSession session){
+    public String homeworkSubmit(@ModelAttribute @Valid HomeworkBindingModel homeworkBindingModel, BindingResult bindingResult, HttpSession session) {
         //bind username
-        UserHomeViewModel user= (UserHomeViewModel) session.getAttribute("user");
-        this.homeworkService.registerHomework(homeworkBindingModel.getName(),homeworkBindingModel.getGit(),user.getUsername());
+        UserHomeViewModel user = (UserHomeViewModel) session.getAttribute("user");
+        this.homeworkService.registerHomework(homeworkBindingModel.getName(), homeworkBindingModel.getGit(), user.getUsername());
         System.out.println();
         return "redirect:/home";
     }
 
 
     @GetMapping("/check")
-    public String registerCheck(Model model){
-        model.addAttribute("homework",this.homeworkService.getRandomHomework());
+    public String registerCheck(Model model) {
+        model.addAttribute("homework", this.homeworkService.getRandomHomework());
         return "homework-check";
     }
 
     @PostMapping("/check")
-    public String checkSubmit(@ModelAttribute @Valid RandomHomeworkViewModel randomHomeworkViewModel,BindingResult bindingResult,HttpSession session){
-        UserHomeViewModel user= (UserHomeViewModel) session.getAttribute("user");
+    public String checkSubmit(@ModelAttribute @Valid RandomHomeworkViewModel randomHomeworkViewModel, BindingResult bindingResult, HttpSession session) {
+        UserHomeViewModel user = (UserHomeViewModel) session.getAttribute("user");
 
         randomHomeworkViewModel.setCurrentUserCheckingId(user.getId());
         this.commentService.checkHomework(randomHomeworkViewModel);
