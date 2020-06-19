@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -29,23 +28,23 @@ public class ExerciseController {
     }
 
     @GetMapping("/add")
-    public String  addExercise(Model model, HttpSession session){
+    public String addExercise(Model model, HttpSession session) {
         UserHomeViewModel user = (UserHomeViewModel) session.getAttribute("user");
 
-        if(user==null ){
+        if (user == null) {
             return "redirect:/";
-        }else if ( user.getRoleName().equals("USER")){
+        } else if (user.getRoleName().equals("USER")) {
             return "redirect:/home";
         }
-        model.addAttribute("exercise",new ExerciseBindingModel());
+        model.addAttribute("exercise", new ExerciseBindingModel());
         return "exercise-add";
     }
 
     @PostMapping("/add")
-    public String registerExercise(@Valid @ModelAttribute ExerciseBindingModel exerciseBindingModel,
-            BindingResult result){
+    public String registerExercise(@ModelAttribute @Valid ExerciseBindingModel exerciseBindingModel,
+                                   BindingResult result) {
         //todo validation errors
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return "exercise-add";
         }
         this.exerciseService.register(this.modelMapper.map(exerciseBindingModel, ExerciseServiceModel.class));

@@ -46,7 +46,9 @@ public class RoleController {
     public String submitRoleForm(@ModelAttribute @Valid AddRoleBindingModel addRoleBindingModel
     , BindingResult result){
 
-        //todo validation
+        if(result.hasErrors()){
+            return "role-add";
+        }
         this.userService.changeRoles(addRoleBindingModel.getUsername(),addRoleBindingModel.getRole());
         System.out.println();
         return "redirect:/home";

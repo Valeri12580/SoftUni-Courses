@@ -35,19 +35,27 @@ public class UserController {
 
     @GetMapping("/register")
     public String register(Model model) {
-        model.addAttribute("user", new UserRegisterBindingModel());
+
+        if (!model.containsAttribute("user")) {
+            model.addAttribute("user", new UserRegisterBindingModel());
+        }
+
         return "register";
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute("user") @Valid UserRegisterBindingModel userRegisterBindingModel, BindingResult bindingResult) {
+    public String register(@ModelAttribute("user") @Valid UserRegisterBindingModel userRegisterBindingModel,
+                           BindingResult bindingResult,
+                           RedirectAttributes redirectAttributes) {
 
         if (!userRegisterBindingModel.getConfirmPassword().equals(userRegisterBindingModel.getPassword())) {
             bindingResult.rejectValue("confirmPassword", "confirmPassword", "Passwords are not equal!");
         }
 
         if (bindingResult.hasErrors()) {
-            return "register";
+            redirectAttributes.addFlashAttribute("user", userRegisterBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.user", bindingResult);
+            return "redirect:/users/register";
         }
 
         this.userService.register(this.modelMapper.map(userRegisterBindingModel, UserServiceModel.class));
@@ -56,9 +64,8 @@ public class UserController {
 
 
     @GetMapping("/login")
-    public String login(Model model) {
+    public String login(@ModelAttribute("user") UserLoginBindingModel userLoginBindingModel) {
 
-        model.addAttribute("user", new UserLoginBindingModel());
 
         return "login";
     }
@@ -74,7 +81,7 @@ public class UserController {
                     , UserHomeViewModel.class);
         } catch (NoSuchObjectException e) {
 
-            bindingResult.rejectValue("password","password","Invalid username or password");
+            bindingResult.rejectValue("password", "password", "Invalid username or password");
         }
 
         //todo fix

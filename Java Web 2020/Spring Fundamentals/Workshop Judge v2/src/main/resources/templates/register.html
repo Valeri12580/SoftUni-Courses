@@ -44,7 +44,7 @@
                                 <label for="username" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Username</label>
                                 <input name="username" type="text"
                                        class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
-                                       id="username" placeholder="Enter username" th:field="*{username}">
+                                       id="username" placeholder="Enter username" th:field="*{username}" th:errorclass="alert-danger">
 
                                 <div class="mx-auto" th:if="${#fields.hasErrors('username')}">
                                     <small class="text-danger" th:errors="*{username}"></small>
@@ -53,7 +53,7 @@
                             <div class="input-group mt-3">
                                 <label for="password" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Password</label>
                                 <input name="password" type="password" class="form-control validate"
-                                       id="password" placeholder="Enter password" th:field="*{password}">
+                                       id="password" placeholder="Enter password" th:field="*{password}" th:errorclass="alert-danger">
                                 <div class="mx-auto" th:if="${#fields.hasErrors('password')}">
                                     <small class="text-danger" th:errors="*{password}"></small>
                                 </div>
@@ -63,7 +63,7 @@
                                     Password</label>
                                 <input name="confirmPassword" type="password" class="form-control validate"
                                        id="confirmPassword" placeholder="Confirm password"
-                                       th:field="*{confirmPassword}">
+                                       th:field="*{confirmPassword}" th:errorclass="alert-danger">
                                 <div class="mx-auto" th:if="${#fields.hasErrors('confirmPassword')}">
                                     <small class="text-danger" th:errors="*{confirmPassword}"></small>
                                 </div>
@@ -72,7 +72,7 @@
                                 <label for="email"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Email</label>
                                 <input name="email" type="email" class="form-control validate" id="email"
-                                       placeholder="Enter email" th:field="*{email}">
+                                       placeholder="Enter email" th:field="*{email}" th:errorclass="alert-danger">
 
                             </div>
                             <div class="mx-auto text-center" th:if="${#fields.hasErrors('email')}">
@@ -81,7 +81,7 @@
                             <div class="input-group mt-3">
                                 <label for="git" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Git</label>
                                 <input name="git" type="text" class="form-control validate" id="git"
-                                       placeholder="Enter git" th:field="*{git}">
+                                       placeholder="Enter git" th:field="*{git}" th:errorclass="alert-danger">
 
                             </div>
                             <div class="mx-auto text-center align-content-center " th:if="${#fields.hasErrors('git')}">

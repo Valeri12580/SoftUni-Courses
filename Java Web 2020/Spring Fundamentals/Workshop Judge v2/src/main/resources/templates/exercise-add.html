@@ -30,7 +30,7 @@
                                 </label>
                                 <input id="name" name="name" type="text"
                                        class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
-                                       th:field="*{name}"/>
+                                       th:field="*{name}" th:errorclass="alert-danger"/>
 
                             </div>
 
@@ -40,7 +40,7 @@
                                 </label>
                                 <input id="startedOn" name="startedOn" type="datetime-local"
                                        class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
-                                       data-large-mode="true" th:field="*{startedOn}"/>
+                                       data-large-mode="true" th:field="*{startedOn}" th:errorclass="alert-danger"/>
 
                             </div>
                             <div class="input-group mb-3 ">
@@ -49,7 +49,7 @@
                                 </label>
                                 <input id="dueDate" name="dueDate" type="datetime-local"
                                        class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
-                                       data-large-mode="true" th:field="*{dueTime}"/>
+                                       data-large-mode="true" th:field="*{dueTime}" th:errorclass="alert-danger"/>
                             </div>
 
                             <div class="input-group mb-3">
@@ -58,12 +58,12 @@
                                     </button>
                                 </div>
 
-                                <div class="input-group mb-3 justify-content-center" th:if="${#fields.hasErrors()}">
+                                <!--                                <div class="input-group mb-3 justify-content-center" th:if="${#fields.hasErrors()}">-->
 
-                                    <small th:each="err:${#fields.errors()}" class="text-danger"
-                                           th:text="${err}"></small>
+                                <!--                                    <small th:each="err:${#fields.errors()}" class="text-danger"-->
+                                <!--                                           th:text="${err}"></small>-->
 
-                                </div>
+                                <!--                                </div>-->
                             </div>
                         </form>
                     </div>
@@ -74,12 +74,8 @@
             </div>
         </div>
     </div>
-    <footer class="row">
-        <div class="col-12 container-fluid text-right font-weight-light">
-            <p class="d-inline-block tm-bg-black text-white py-2 px-4">
-                &copy; Spring Team 2020
-            </p>
-        </div>
+    <footer class="row" th:include="~{fragments/headfooter/footer}">
+
     </footer>
 </div>
 
