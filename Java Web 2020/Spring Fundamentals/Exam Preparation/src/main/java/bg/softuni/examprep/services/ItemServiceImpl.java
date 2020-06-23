@@ -42,7 +42,8 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ItemInfoViewModel getSpecificItemInfo(String id) {
-        return this.modelMapper.map(this.itemRepository.findById(id),ItemInfoViewModel.class);
+        ItemInfoViewModel result = this.modelMapper.map(this.itemRepository.findById(id).get(), ItemInfoViewModel.class);
+        return result;
     }
 
     @Override
