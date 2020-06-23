@@ -2,11 +2,13 @@ package bg.softuni.examprep.services;
 
 import bg.softuni.examprep.models.binding.ItemRegisterBindingModel;
 import bg.softuni.examprep.models.entities.Item;
+import bg.softuni.examprep.models.service.ItemServiceModel;
 import bg.softuni.examprep.models.view.ItemHomeViewModel;
 import bg.softuni.examprep.models.view.ItemInfoViewModel;
 import bg.softuni.examprep.repositories.CategoryRepository;
 import bg.softuni.examprep.repositories.ItemRepository;
 import bg.softuni.examprep.services.interfaces.ItemService;
+import bg.softuni.examprep.unitls.CategoryMap;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,8 +44,10 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ItemInfoViewModel getSpecificItemInfo(String id) {
-        ItemInfoViewModel result = this.modelMapper.map(this.itemRepository.findById(id).get(), ItemInfoViewModel.class);
-        return result;
+        ItemServiceModel data = this.modelMapper.map(this.itemRepository.findById(id).get(), ItemServiceModel.class);
+        data.setImageUrl(CategoryMap.getSpecificUrl(data.getGender().toString().toUpperCase()+"-"+data.getCategory().getType().toString().toUpperCase()));
+
+        return this.modelMapper.map(data, ItemInfoViewModel.class);
     }
 
     @Override
@@ -58,6 +62,13 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemHomeViewModel> getAllItems() {
-        return List.of(this.modelMapper.map(this.itemRepository.findAll(),ItemHomeViewModel[].class));
+        List<ItemServiceModel>serviceModel=List.of(this.modelMapper.map(this.itemRepository.findAll(),ItemServiceModel[].class));
+        serviceModel.stream().forEach(e->{
+            String concat=e.getGender().toString().toUpperCase()+"-"+e.getCategory().getType().toString().toUpperCase();
+
+            e.setImageUrl(CategoryMap.getSpecificUrl(concat));
+        });
+
+        return List.of(this.modelMapper.map(serviceModel,ItemHomeViewModel[].class));
     }
 }

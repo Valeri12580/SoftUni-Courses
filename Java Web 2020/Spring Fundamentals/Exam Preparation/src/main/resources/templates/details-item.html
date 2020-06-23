@@ -14,7 +14,7 @@
     <div class="container-fluid bg-dark w-25 m-auto ">
         <div class="row justify-content-center ">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="/img/MALE-SHORTS.jpg" alt="Card image cap">
+                <img class="card-img-top" th:src="@{${item.getImageUrl()}}" alt="Card image cap">
                 <div class="card-body bg-gray align-content-center text-center">
                     <h6 th:text="${item.name}"></h6>
                     <p class="card-text" th:text="${item.description}"></p>

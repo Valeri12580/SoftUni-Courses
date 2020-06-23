@@ -79,6 +79,7 @@ public class UserController {
         }
 
 
+
         session.setAttribute("user",userLoginBindingModel.getUsername());
 
         return "redirect:/home";

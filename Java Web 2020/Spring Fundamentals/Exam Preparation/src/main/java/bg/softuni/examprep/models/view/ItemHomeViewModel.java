@@ -12,4 +12,5 @@ public class ItemHomeViewModel {
     private String id;
     private String name;
     private double price;
+    private String imageUrl;
 }
