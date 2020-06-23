@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class ItemRegisterBindingModel {
 
-    @Unique
+    @Unique(classType = "Item")
     @Size(min = 2,message = "Password length must be more than two characters")
     private String name;
 

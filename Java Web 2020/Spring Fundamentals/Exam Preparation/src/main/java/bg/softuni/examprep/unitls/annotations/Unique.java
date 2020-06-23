@@ -12,4 +12,5 @@ public @interface Unique {
     String message() default "User with that username already exists!";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
+    String classType() ;
 }

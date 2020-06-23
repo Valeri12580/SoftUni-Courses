@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class UserRegisterBindingModel {
 
-    @Unique
+    @Unique(classType = "User")
     @Size(min = 2,message = "Username length must be more than two characters!")
     private String username;
 

@@ -18,6 +18,8 @@ public interface ItemService {
 
     void delete(String id );
 
+    boolean isItemNameFree(String itemName);
+
 
 
 }

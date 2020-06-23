@@ -52,6 +52,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    public boolean isItemNameFree(String itemName) {
+        return this.itemRepository.findByName(itemName)==null;
+    }
+
+    @Override
     public List<ItemHomeViewModel> getAllItems() {
         return List.of(this.modelMapper.map(this.itemRepository.findAll(),ItemHomeViewModel[].class));
     }
