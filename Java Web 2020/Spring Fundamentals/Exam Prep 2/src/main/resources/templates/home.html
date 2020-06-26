@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/header">
+
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark" th:insert="/fragments/nav-authorized">
+
+    </nav>
+</header>
+<main>
+    <div class="text-center mb-3">
+        <h4 class="text-white mt-2" th:text="| Welcome to the arena, ${#session.getAttribute('username')}|"></h4>
+    </div>
+    <hr class="my-3"/>
+    <div class="container">
+        <div class="row mb-4 d-flex justify-content-around">
+            <div class="col-md-3 d-flex flex-column text-center mb-3" th:each="h:${heroes}">
+                <img th:src="${h.getImageUrl()}" class="img-thumb" width="300" height="300"/>
+                <h5 th:text="${h.getHeroClass().name()}" class="text-white text-center">Warrior</h5>
+                <a th:href="@{heroes/details/{id}(id=${h.getId()})}" class="btn btn-info mb-2">Details</a>
+                <a th:if="${h.getUserUsername().equals(#session.getAttribute('username'))}"
+                   th:href="@{heroes/delete/(id=${h.getId()})}" class="btn btn-danger">Delete</a>
+            </div>
+
+        </div>
+    </div>
+</main>
+<span style="visibility: hidden">...</span>
+<footer class="footer bg-dark  py-2" th:insert="/fragments/footer">
+
+</footer>
+</body>
+</html>
