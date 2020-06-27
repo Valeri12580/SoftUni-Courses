@@ -48,7 +48,11 @@
 					</div>
             </div>
         </div>
-        <a th:if="${sum!=null}" th:href="@{/products/buy/all}" class="btn btn-danger" th:text="|Buy all products for ${sum} lv|"></a>
+        <th:block >
+            <a th:if="${sum!=null}" th:href="@{/products/buy/all}" class="btn btn-danger" th:text="|Buy all products for ${sum} lv|"></a>
+            <a th:unless="${sum!=null}" th:href="@{/products/buy/all}" class="btn btn-danger" >Buy all products for 0 lv</a>
+        </th:block>
+
     </div>
 </main>
 <footer class="footer bg-transparent  py-2" th:insert="fragments/footer">
