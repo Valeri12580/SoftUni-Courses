@@ -4,4 +4,7 @@ import com.softuni.judgeversiontwo.models.view.RandomHomeworkViewModel;
 
 public interface CommentService {
     void checkHomework(RandomHomeworkViewModel randomHomeworkViewModel);
+
+
+    double getAverage();
 }

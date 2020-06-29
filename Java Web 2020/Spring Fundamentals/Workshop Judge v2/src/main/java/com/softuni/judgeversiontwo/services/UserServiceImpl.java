@@ -8,7 +8,6 @@ import com.softuni.judgeversiontwo.repositories.UserRepository;
 import com.softuni.judgeversiontwo.services.interfaces.RoleService;
 import com.softuni.judgeversiontwo.services.interfaces.UserService;
 import com.softuni.judgeversiontwo.utils.interfaces.ValidationUtil;
-import org.hibernate.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -100,5 +99,11 @@ public class UserServiceImpl implements UserService {
 
         return this.userRepository.getTopUsers().
                 stream().map(e->String.valueOf(e[0])).collect(Collectors.toList());
+    }
+
+    @Override
+    public long getRegisteredUsers() {
+
+        return this.userRepository.count();
     }
 }

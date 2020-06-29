@@ -40,6 +40,7 @@ public class UserController {
             model.addAttribute("user", new UserRegisterBindingModel());
         }
 
+        
         return "register";
     }
 

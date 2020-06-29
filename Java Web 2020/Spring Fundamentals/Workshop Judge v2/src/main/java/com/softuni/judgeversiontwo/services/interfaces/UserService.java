@@ -24,6 +24,8 @@ public interface UserService {
 
     List<String>getTopStudents();
 
+    long getRegisteredUsers();
+
 
 
 
