@@ -1,5 +1,6 @@
 package bg.softuni.demo.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,16 +8,14 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class User implements UserDetails {
 
     @Id
@@ -25,10 +24,14 @@ public class User implements UserDetails {
     private String username;
     private String password;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_roles",joinColumns = {@JoinColumn(name = "user_id")
+    },inverseJoinColumns = {@JoinColumn(name = "role_id")})
+    private Set<Role>roles;
+
     @Override
-    @Transient
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return new HashSet<Role>();
+        return this.roles;
     }
 
     @Override

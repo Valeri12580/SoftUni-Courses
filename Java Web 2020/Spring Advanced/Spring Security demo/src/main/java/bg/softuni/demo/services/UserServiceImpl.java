@@ -28,4 +28,8 @@ public class UserServiceImpl implements UserDetailsService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         this.userRepository.save(user);
     }
+
+    public boolean isEmpty(){
+        return this.userRepository.count()<1;
+    }
 }
