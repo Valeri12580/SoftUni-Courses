@@ -1,0 +1,9 @@
+test:
+  name: "valeri"
+  age: 15
+  hobbies: ["Programming","Guitar"]
+  courses:
+    "Java"
+    "JS"
+
+
