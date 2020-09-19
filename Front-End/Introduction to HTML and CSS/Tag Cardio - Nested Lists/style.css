@@ -1,0 +1,15 @@
+#outer{
+    list-style: upper-roman;
+}
+
+#first-outer{
+    list-style: lower-latin;
+}
+
+#second-inner{
+    list-style: circle;
+}
+
+#last{
+    list-style: disc;
+}
