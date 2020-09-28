@@ -1,0 +1,30 @@
+@import url('../Styling\ Tables/style.css');
+
+
+hr{
+    border: 2px solid grey;
+}
+
+
+blockquote p:nth-child(3){
+    text-align: right;
+}
+
+blockquote{
+    border-left: 4px solid grey;
+    font-style: italic;
+}
+
+
+blockquote p {
+    padding-left: 10px;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: Georgia, serif;
+}
+
+html{
+    font-family: Helvetica, sans-serif;
+}
+

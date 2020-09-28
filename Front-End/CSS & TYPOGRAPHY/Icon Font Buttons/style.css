@@ -1,0 +1,23 @@
+@import url('https://use.fontawesome.com/releases/v5.10.2/css/all.css');
+
+.fa-star{
+   color: white;
+}
+
+.fa-envelope{
+    color:white
+}
+
+.btn{
+   
+    padding: 5px;
+    margin-bottom: 30px;
+}
+
+.click-me{
+    background-color: green;
+}
+
+.email-me{
+    background-color: orange;
+}
