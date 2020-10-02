@@ -1,0 +1,18 @@
+body{
+    background-color: rgb(238, 238, 238);
+}
+
+
+article{
+    box-sizing: border-box;
+    margin:0 auto;
+    max-width: 70%;
+}
+
+h1{
+    font-size: 25px;
+}
+
+img{
+    max-width: 500px;
+}
