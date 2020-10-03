@@ -1,0 +1,34 @@
+body{
+    background-color: rgb(238, 238, 238);
+}
+
+
+header{
+    display: inline-block;
+    max-width: 55%;
+}
+
+aside{
+    display: inline-block;
+    margin:0px 0px 0px 35px;
+}
+
+section{
+    max-width: 55%;
+}
+
+
+article{
+    box-sizing: border-box;
+    margin:0 auto;
+    max-width: 70%;
+    vertical-align: middle;
+}
+
+h1{
+    font-size: 25px;
+}
+
+img{
+    max-width: 500px;
+}

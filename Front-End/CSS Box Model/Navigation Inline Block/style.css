@@ -1,21 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
+html{
+    font-family:Helvetica, sans-serif;
+}
+
 body{
     width: 80%;
     margin: 0 auto;
     box-sizing: border-box;
 }
 
+
 header > *{
     display: inline-block;
 }
 
-
-header h1{
+header ul{
+    display: inline-block;
+}
+ h1{
     padding-right: 100px;
+    font-family: Secular One;
+    display: inline;
+}
+header nav ul li{
+    display: inline-block;
 }
 
-header nav a {
+header nav ul li  a {
     padding:10px;
     color: #48AB6C;
     font-size: 18px;
     
+}
+
+
+main h1{
+    font-weight: 300;
+   
 }
