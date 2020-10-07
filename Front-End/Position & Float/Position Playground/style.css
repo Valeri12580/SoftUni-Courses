@@ -1,0 +1,42 @@
+body{
+    margin: 0 auto;
+}
+
+div{
+    height: 500px;
+}
+
+body>div:nth-child(1) {
+    background: rgb(45, 132, 195);
+    background: linear-gradient(90deg, rgba(45, 132, 195, 1) 28%, rgba(33, 201, 20, 1) 100%);
+}
+
+body > div:nth-child(1) img {
+    width: 300px;
+    height: 150px;
+}
+
+body > div:nth-child(2) img {
+    width: 150px;
+    height: 300px;
+}
+
+body>div:nth-child(2) {
+    background: rgb(130, 58, 158);
+    background: linear-gradient(90deg, rgba(130, 58, 158, 1) 28%, rgba(201, 135, 20, 1) 100%);
+}
+
+
+
+
+
+.card:nth-child(){
+    display: block;
+    position: absolute;
+    
+    
+    
+}
+
+
+
