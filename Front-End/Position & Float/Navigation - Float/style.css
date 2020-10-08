@@ -1,0 +1,78 @@
+html{
+    background-color: #EEEEEE;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: Helvetica, sans-serif;
+}
+
+body{
+    width: 65%;
+    margin: 0 auto;
+}
+
+
+.nav  {
+    display: inline-block;
+}
+
+.nav  li{
+    display: inline-block;
+    padding: 10px;
+}
+
+
+img{
+    padding: 10px;
+    border: 2px solid black;
+    background-color: white;
+    box-shadow: 5px,10px,rgba(0, 0, 0, 0.25) ;
+}
+
+
+main article:nth-child(2) img {
+    float: right;
+    padding: 10px;
+    width: 150px;
+    margin-left: 15px;
+}
+
+blockquote{
+
+    border-left: 4px solid silver;
+    padding-left: 10px;
+    display: inline-block;
+    width: 250px;
+    float:right;
+    font-family: Georgia, serif;
+}
+
+main article:nth-child(2) p:nth-child(3){
+    box-sizing: border-box;
+    display: inline-block;
+    width: 550px;
+}
+
+main article:nth-child(3) img{
+    float: left;
+    margin-right: 15px;
+}
+
+
+.site-title{
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+aside{
+    float: right;
+    margin-left: 80px;
+}
+
+h1,h2,h3{
+    font-family: Georgia, serif;
+    font-size: 1erm;
+}
+
+

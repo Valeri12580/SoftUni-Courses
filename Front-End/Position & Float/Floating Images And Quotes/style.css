@@ -1,0 +1,57 @@
+html{
+    
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: Helvetica, sans-serif;
+}
+
+body{
+    width: 60%;
+    margin: 0 auto;
+    background-color: rgb(238, 238, 238);
+}
+
+img{
+    padding: 10px;
+    border: 2px solid black;
+    background-color: white;
+}
+
+main section:nth-child(1) img {
+    float: right;
+    padding: 10px;
+    width: 150px;
+    margin-left: 15px;
+}
+
+blockquote{
+
+    border-left: 4px solid silver;
+    padding-left: 10px;
+    display: inline-block;
+    width: 250px;
+    float: right;
+    font-family: Georgia, serif;
+}
+
+main section:nth-child(2) p:nth-child(3){
+    box-sizing: border-box;
+    display: inline-block;
+    width: 550px;
+}
+
+main section:nth-child(3) img{
+    float: left;
+    margin-right: 15px;
+}
+
+
+.site-title{
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+
+

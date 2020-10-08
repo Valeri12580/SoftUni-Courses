@@ -1,6 +1,6 @@
 body{
     background-color: rgb(238, 238, 238) ;
-    width: 80%;
+   
 }
 
 
@@ -11,16 +11,26 @@ button{
     width: 110px;
     height: 40px;
     border-radius: 7px;
+    margin-left: 125px;
 }
 
 
-section{
-  
+.card{
+    width: 250px;
     margin:0 auto;
+    margin-top: 250px;
+    background-color: rgb(255, 255, 255) ;
 
 }
 
 img{
-    width: 300px;
+    width: 250px;
     height: 160px;
+    position: absolute;
+    top: 100px;
+}
+
+section  div:nth-child(2){
+    width: 250px;
+    padding: 10px;
 }

@@ -1,0 +1,48 @@
+@import url('https://use.fontawesome.com/releases/v5.10.2/css/all.css');
+
+
+ul{
+    display: inline-block;
+    width: 500px;
+    box-sizing: border-box;
+    margin:0 auto;
+   
+}
+
+ul li {
+    display: inline-block;
+    padding: 5px;
+    list-style: none;
+}
+
+a 
+{
+    text-decoration: none;
+    border-radius: 50%;
+    background-color: gainsboro;
+}
+
+
+
+i{
+    size: 15px;
+}
+
+a:nth-child(1):hover{
+    color: lightseagreen;
+}
+
+a:nth-child(2):hover{
+    color: lightseagreen;
+}
+
+a:nth-child(3):hover{
+    color: orange;
+}
+a:nth-child(4):hover{
+    color: lightseagreen;
+}
+a:nth-child(5):hover{
+    color: lightseagreen;
+}
+
