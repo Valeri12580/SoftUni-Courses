@@ -1,0 +1,28 @@
+html{
+    background-color: wheat;
+}
+
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+}
+
+
+
+li{
+    list-style-type: none;
+    margin: 20px;
+    padding: 20px;
+    border: 4px solid black;
+    background-color: white;
+}
+
+.gallery{
+    display: flex;
+}
+
+img{
+    
+}

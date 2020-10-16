@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <style>
+        .container {
+            display: flex;
+            background-color: beige;
+            height: 1000px;
+            align-items:flex-start;
+        }
+
+        .item {
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .first-item {
+            background-color: pink;
+            order:3;
+        }
+
+        .second-item {
+            background-color: red;
+            order: 1;
+        }
+
+        .third-item {
+            background-color: blue;
+        }
+    </style>
+
+
+    <section class="container">
+        <article class="first-item item">
+            First item
+        </article>
+        <article class="second-item item">
+            Second item   Second item   Second item   Second item
+        </article>
+        <article class="third-item item">
+            Third item
+        </article>
+    </section>
+
+</body>
+
+</html>
