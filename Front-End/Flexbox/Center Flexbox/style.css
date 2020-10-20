@@ -1,4 +1,4 @@
-html{
+body{
     background-color: rgb(238, 238, 238);
 }
 
@@ -11,6 +11,6 @@ body{
 
 .card{
     border:1px solid transparent;
-    background-color: white;
+    background-color: rgb(255,255,255);
     border-radius: 10px;
 }

@@ -1,0 +1,65 @@
+body{
+    font-family: "Helvetica",sans-serif;
+    margin: 50px;
+}
+
+
+
+h3,span,aside{
+    border: 1px solid black;
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+
+}
+
+
+aside{
+    flex-basis: 15%;
+}
+
+.workweek ,.weekdays{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+h3{
+    border-right: none;
+    min-height: 4em;
+}
+
+.weekdays h3{
+    border-top: none;
+}
+
+.days{
+    flex-grow: 1;
+}
+
+.container{
+    display: flex;
+    max-width: 65vw;
+}
+
+.notes{
+    flex-direction: column;
+}
+
+.week{
+    display: flex;
+}
+
+.week span{
+    padding-bottom: 90px;
+    flex-grow: 1;
+    border-top: 0;
+    border-right: 0;
+    
+}
+
+.weekdays aside{
+    border-top: none;
+}
+
+

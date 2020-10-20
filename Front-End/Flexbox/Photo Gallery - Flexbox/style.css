@@ -2,11 +2,15 @@ html{
     background-color: wheat;
 }
 
+body{
+    display: flex;
+}
+
 ul{
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 
@@ -23,6 +27,3 @@ li{
     display: flex;
 }
 
-img{
-    
-}
