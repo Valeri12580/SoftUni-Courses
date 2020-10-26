@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    background-color: #EEEEEE;
+}
+
+section {
+    margin: 0 auto;
+    width: 80%;
+
+}
+
+
+table {
+    
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
+    border-collapse: collapse;
+}
+
+th,tr,td{
+    padding:10px;
+    border: 1px solid silver;
+    min-width:  300px;
+    
+}
+
+td,th{
+    margin: 0;
+  
+}
+
+
+tbody tr:nth-child(1) td{
+    background-color: #EEEEEE;
+}
+tbody tr:nth-child(2) td{
+    background-color: white;
+}
+
+thead{
+    background-color: #333333;
+    color:white
+}
+
+@media screen and (max-width:600px){
+    thead{
+        display: none;
+        
+    }
+
+    table,tbody,tr{
+        display: flex;
+        flex-direction: column;
+    }
+    th,tr{
+      border: none;
+        
+    }
+
+    tr{
+        margin: 0;
+    }
+
+    tr td:nth-child(1)::before{
+        content:'First Name ';
+    }
+
+    tr td:nth-child(2)::before{
+        content:'Last Name ';
+    }
+
+    tr td:nth-child(3)::before{
+        content:'Job Title ';
+    }
+}

@@ -1,0 +1,132 @@
+html{
+    background-color: #EEEEEE;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: Helvetica, sans-serif;
+}
+
+ul li{
+    list-style-type: none;
+}
+ul{
+    display: flex;
+}
+
+nav{
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
+
+header{
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu{
+    display: none;
+}
+
+
+
+a{
+    border: 1px solid black;
+    padding: 15px 20px 15px 20px;
+    border-radius: 15px;
+    background: black;
+    color: white;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+
+body{
+    width: 90%;
+    margin: 0 auto;
+}
+
+img{
+    padding: 10px;
+    border: 2px solid black;
+    background-color: white;
+}
+
+main article:nth-child(1) img {
+    float: right;
+    padding: 10px;
+    width: 150px;
+    margin-left: 15px;
+}
+
+blockquote{
+
+    border-left: 4px solid silver;
+    padding-left: 10px;
+    display: inline-block;
+    width: 250px;
+    float: right;;
+}
+
+main article:nth-child(2) p:nth-child(3){
+    box-sizing: border-box;
+    display: inline-block;
+    width: 550px;
+}
+
+main article:nth-child(3) img{
+    float: left;
+    margin-right: 15px;
+}
+
+
+.site-title{
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+
+
+@media screen and (max-width:992px){
+    body{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width:768px){
+    header{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border:none
+    }
+    a{
+        padding-right: 50vw;
+    }
+
+    ul{
+        flex-direction: column;
+        align-items: center;
+        padding: 0px;
+    }
+    li{
+        margin-bottom: 35px;
+    }
+
+    nav{
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        width: 100%;
+        background-color: white;
+    }
+    .menu{
+        display: block;
+        margin: 5px;
+        font-weight: bolder;
+    }
+
+   
+}
+
+
