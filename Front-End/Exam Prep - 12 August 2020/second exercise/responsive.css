@@ -1,0 +1,23 @@
+/* TODO: Add media queries */
+
+@media screen and (max-width:600px){
+   ul{
+       display: flex;
+       justify-content: center;
+   }
+
+   .thumbnails{
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+   }
+
+   .thumbnails div{
+       width: 80%;
+   }
+
+   .thumbnails div img{
+    max-width : 450px;
+    max-height: 200px;
+   }
+}

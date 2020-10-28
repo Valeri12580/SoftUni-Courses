@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&display=swap');
+@import url('https://use.fontawesome.com/releases/v5.10.2/css/all.css');
+
+
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.container {
+    margin: 0 auto;
+    display: flex;
+    width: 80%;
+    margin-top: 150px;
+    justify-content: center;
+}
+
+.container article {
+
+    padding: 25px;
+}
+
+.container article:nth-child(1) {
+    background-color: #E3F3FD;
+    border-radius: 8px;
+    box-shadow: 1px 2px #D8D8D8;
+    width: 40%;
+    margin-right: 15px;
+    color: #4E5C6C;
+
+}
+
+.container article:nth-child(1) ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+i {
+    margin-right: 5px;
+    color: #44A9F8;
+}
+
+.container article:nth-child(2) {
+    border: 5px solid #44A9F8;
+    border-radius: 8px;
+    text-align: center;
+    width: 40%;
+    margin-left: 15px;
+    color: #4E5C6C;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.container article:nth-child(2)>h1 {
+    color: #44A9F8;
+    font-size: 30px;
+
+}
+
+span {
+    color: #4E5C6C;
+    font-size: 15px;
+   
+}
+
+button{
+    color: white;
+    background-color: #44A9F8;
+    border-radius: 8px;
+    box-shadow: 1px 3px 5px #737373 ;
+    padding: 10p;
+    padding: 8px 40px;
+    border: transparent;
+}

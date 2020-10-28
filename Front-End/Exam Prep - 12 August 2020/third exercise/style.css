@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&display=swap');
+@import url('https://use.fontawesome.com/releases/v5.10.2/css/all.css');
+@import url('https://use.fontawesome.com/releases/v5.10.2/css/all.css');
+
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+
+
+header {
+    background:linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.7)),url(images/hero-certificates.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    object-fit: cover;
+
+
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    width: 90%;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    margin: 0 auto;
+    box-shadow: 3px 3px 5px grey;
+  
+}
+
+.head .navigation li:nth-child(3){
+    border-top: 3px solid #42ABF8;
+    box-sizing: border-box;
+}
+
+.profile{
+    border-radius: 50%;
+    background: #42abf8;
+    padding: 8px;
+    box-shadow: 3px 4px 9px -2px #42abf8;
+}
+
+.logo {
+    margin-left: 30px;
+}
+
+.navigation {
+    margin-right: 50px;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+}
+
+ul li {
+    margin-right: 15px;
+}
+
+ul li a {
+    color: #53606F;
+    font-size: 17px;
+}
+
+.description {
+    display: flex;
+    align-items: center;
+
+}
+
+.main-description {
+    background-color: #29394B;
+    color: white;
+    border-radius: 8px;
+    max-width: 50%;
+    margin: 60px 50px 0px 150px;
+    padding: 20px;
+
+}
+
+.diploma img {
+    vertical-align: bottom;
+    margin: 0;
+    margin-top: 50px;
+}
+
+.important {
+    color: #53606F;
+    margin-left: 150px;
+    margin-top: 25px;
+}
+
+main{
+    margin-top: 60px;
+  
+  
+}
+
+.diploma-description {}
+
+.diploma-description>h1 {
+    text-align: center;
+    color: #29394B;
+}
+
+.diploma-description article:nth-child(2) {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #F4F5F7;
+    padding: 30px;
+    color: #29394B;
+}
+
+.diploma-description article:nth-child(3) {
+    width: 85%;
+    margin: 0 auto;
+    color: #29394B;
+}
+
+.explore{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 100px;
+    text-align: center;
+    background-image: url(images/sign-up-prompt-background.jpg);
+    color: white;
+    padding: 50px;
+    border-radius:8px;
+}
+
+.buttons button:nth-child(1){
+    color: lightskyblue;
+    background-color: white;
+    outline-style: none;
+    border-radius: 8px;
+    width: 115px;
+    height: 35px;
+    border: transparent;
+    margin-right: 15px;
+}
+
+.buttons button:nth-child(3){
+    color: white;
+    background-color: transparent;
+    outline-style: none;
+    border-radius: 8px;
+    width: 155px;
+    height: 35px;
+    border: 2px solid white;
+    margin-left: 15px;
+}
+span{
+    border-left: 3px solid white;
+}
+
+.underline{
+    border-bottom: 2px solid #29394B;
+    width: 87%;
+    margin: 0 auto;
+    display: block;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+
+.foot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    width: 90%;
+    margin: 0 auto;
+ 
+}
+
+
+
+i{
+    color:#29394B ;
+}
