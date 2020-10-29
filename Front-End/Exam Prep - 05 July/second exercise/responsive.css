@@ -1,0 +1,13 @@
+/* TODO: Add media queries */
+
+@media all and (max-width:884px){
+    .newsletter-boxes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .newsletter-boxes>article{
+        max-width:70% ;
+    }
+}

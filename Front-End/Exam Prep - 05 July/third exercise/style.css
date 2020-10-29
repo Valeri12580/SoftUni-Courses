@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&display=swap');
+@import url('https://use.fontawesome.com/releases/v5.10.2/css/all.css');
+
+
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    
+   
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+    background-color: white;
+    border: none;
+    box-shadow: 0px 4px 7px -7px black;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.logo{
+    padding-left: 50px;
+
+}
+
+
+.navigation{
+    padding-right: 50px;
+}
+
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li{
+    display: inline;
+    margin: 0px 5px 0px 5px;
+}
+
+ul li a{
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    color: #54546D;
+}
+
+.login{
+    border-radius: 35px;
+    background-color: #9B5DC6;
+    color: white;
+    padding: 5px 15px 5px 15px;
+    border: transparent;
+}
+
+main{
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.diplomas-certificates{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.main-info{
+    color: #54546D;
+    display: flex;
+    margin-bottom: 0px;
+    justify-content: center;
+}
+
+
+
+.info h1{
+    font-size: 20px;
+}
+
+.declaration p{
+    font-size: 12px;
+    color: grey;
+}
+
+.udostoverenie{
+    background-color: #14162B;
+    color: white;
+    padding:40px 40px 0px 40px;
+    display: flex;
+    margin-top: 45px;
+
+}
+
+
+.udostoverenie-snimki img{
+    position: relative;
+    top: 40px;
+}
+
+.careers{
+    display: flex;
+    width: 90%;
+    margin: 30px auto;
+    justify-content: space-between;
+}
+
+.careers-img{
+    margin-right: 50px;
+}
+
+.careers-description h1{
+    color: #54546D;;
+}
+
+.careers-description p{
+    color: #54546D;
+    font-size: 14px;
+}
+
+
+footer{
+    background-color: #14162B;
+    display: flex;
+    justify-content: space-around;
+}
+
+footer >section{
+    display: flex;
+    flex-direction: column;
+}
+
+footer h1{
+    color: #9B5DC6;
+    font-size: 18px;
+}
+
+footer ul li{
+    display: block;
+    padding-bottom: 5px;
+}
+footer ul{
+    padding:0 ;
+    margin-top: 0;
+}
+
+footer ul li  a,footer p{
+    color: #F4F5F7;
+
+}
+
+.icons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+i{
+    color: white;
+    font-size: 30px;
+    padding: 5px;
+}
