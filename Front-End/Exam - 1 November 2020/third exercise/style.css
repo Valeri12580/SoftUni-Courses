@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    background-color: #FFFFFF;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    margin: auto;
+    align-items: center;
+    margin-bottom: -20px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0px 12px;
+    color: #5F587F;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.taxes {
+    text-align: center;
+    background-color: #54546D;
+    height: 350px;
+
+}
+
+.taxes h1 {
+
+    color: white;
+    padding-top: 70px;
+    font-size: 25px;
+}
+
+.taxes-description {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 5p;
+    bottom: 200px;
+
+}
+
+.taxes-description h1 {
+    color: #55566E;
+}
+
+.taxes-description p {
+    color: #665484;
+}
+
+.price {
+    display: flex;
+    justify-content: center;
+}
+
+hr {
+    border-left: 0px solid white;
+    margin: 20px 25px;
+}
+
+.course {
+    background-color: white;
+    border-radius: 8px;
+    margin: 10px;
+    box-shadow: 0px 4px 9px -5px black;
+    width: 435px;
+}
+
+
+
+.price {
+    width: 100%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    font-size: 15px;
+
+}
+
+.price div p,
+.price div h1 {
+    color: white;
+}
+
+.try {
+    background-color: #9A5DC6;
+    color: white;
+    font-weight: 600;
+    border: transparent;
+    border-radius: 70px;
+    padding: 10px 40px;
+    box-shadow: 1px 2px 7px -2px black;
+    margin-top: 30px;
+}
+
+.stand-online {
+    width: 80%;
+    margin: auto;
+    color: #55566E;
+    margin-top: -90px;
+}
+
+
+
+.table p {
+    margin: 0;
+    padding: 10px 0px;
+    padding-left: 20px;
+}
+
+.table p:nth-child(odd) {
+    margin: 0;
+    background-color: #E6E6E6;
+
+}
+
+.table p:nth-child(2n) {
+    margin: 0;
+    background-color: #F8F8F8;
+
+}
+
+.table p:nth-child(1) {
+    border-top-left-radius: 10px;
+}
+
+body>main>section.stand-online>article>p:nth-child(6) {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+span {
+    position: absolute;
+}
+
+span.check {
+    right: 500px;
+}
+
+span.cross {
+    right: 400px;
+}
+
+.calc {
+
+    position: absolute;
+    left: -71px;
+    top: 221px;
+}
+
+.stand-online>p {
+    margin-bottom: 40px;
+}
+
+.finansirane {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
+    align-items: center;
+}
+
+.finansirane h1 {
+    color: #575D7A;
+}
+
+.finansirane p {
+    color: #55566E
+}
+
+body>main>section.finansirane>article:nth-child(1) {
+    margin-right: 10px;
+}
+
+
+footer {
+    margin-top: 50px;
+    text-align: center;
+    color: #908EA9;
+    background-color: #54546D;
+    padding: 20px;
+}
+
+.price.two {
+    background: rgb(89,135,177);
+background: linear-gradient(90deg, rgba(89,135,177,1) 28%, rgba(130,168,184,1) 98%);
+}
+
+.price.three {
+    background: rgb(30,14,112);
+background: linear-gradient(90deg, rgba(30,14,112,1) 28%, rgba(119,102,194,1) 83%);
+}
+
+
+
+.course-description {
+    height: 250px;
+    padding: 15px;
+}
+
+.price.one {
+    background: rgb(6,157,64);
+background: linear-gradient(90deg, rgba(6,157,64,1) 28%, rgba(130,184,148,1) 98%);
+}
+
+.finansirane p{
+    width: 90%;
+}

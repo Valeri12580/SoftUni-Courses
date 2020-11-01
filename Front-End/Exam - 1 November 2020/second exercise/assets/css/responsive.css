@@ -1,0 +1,47 @@
+@media all and (max-width:600px) {
+
+    body{
+        width: 1215px;
+    }
+    body>section:nth-child(2)>article>div {
+        flex-direction: column;
+        align-items: center;
+      
+    }
+
+    .banner h2{
+        border-width: 4px 2px;
+    }
+
+    .feature{
+        width: 90%;
+    }
+
+    body>section.banner>ul>li {
+        width: 90%;
+    }
+
+    body>section.banner>ul>li>a {
+        width: 100%;
+    }
+
+    body>section.wrapper.style2.special>div>form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    body > section.wrapper.style2.special > div > form > article{
+        width: 80%;
+    }
+
+    body > section.wrapper.style2.special > div > form > ul > li {
+        width: 89%;
+    }
+
+    body > section.wrapper.style2.special > div > form > ul > li > input[type=submit]{
+       width: 90%;
+    }
+    .wrapper > .inner.narrow {
+        width: 100%;
+    }
+}

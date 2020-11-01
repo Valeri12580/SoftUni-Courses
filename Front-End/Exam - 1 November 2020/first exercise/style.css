@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Syne+Mono&display=swap');
+
+body{
+    font-family: 'Syne Mono', monospace;
+}
+
+h1,h2,h3,h4,h5{
+    font-family: 'Itim', cursive;
+}
+
+h1{
+    font-size: 45px;
+    margin-bottom: -5px;
+}
+
+
+.outer p{
+    color: #757586;
+    
+}
+
+
+.outer{
+    width: 50%;
+    margin: auto;
+    margin-bottom: 57px;
+}
+
+.inner{
+    display: flex;
+    align-items: flex-end;
+}
+
+
+button{
+    background-color: #03A87C;
+    border: transparent;
+    color: white;
+    padding: 13px 50px;
+    border-radius: 4px;
+    margin-right: 125px;
+    width: 200px;
+    font-weight: bolder;
+}
+
+span{
+    background-color: #CEFDE9;
+}
+
+hr{
+    border: 1px solid #757586;
+    width: 20%;
+}
