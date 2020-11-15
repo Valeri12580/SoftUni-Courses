@@ -7,7 +7,7 @@ import {Article} from '../models/article.model';
   styleUrls: ['./article.component.css']
 })
 export class ArticleComponent implements OnInit {
-  private symbols: number = 250;
+  private symbols: number = 255;
   @Input() article: Article;
   @Input() articleDesc: String;
 
@@ -29,13 +29,10 @@ export class ArticleComponent implements OnInit {
   }
 
   readMore():void {
-    this.articleDescLen=this.descToShow.length;
-    if (this.articleDescLen >= this.symbols) {
       this.showReadMoreBtn = false;
       this.showHideBtn = true;
-    } else {
       this.descToShow=this.articleDesc.substr(0,255);
-    }
+
 
   }
 
